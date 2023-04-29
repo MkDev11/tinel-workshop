@@ -1,17 +1,17 @@
 import React from 'react'
-import { WorkshopCategory } from '../enums'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { Main } from './Main'
 
 type Props = {
-  category: WorkshopCategory | null
+  children: React.ReactNode
 }
 
-export function Page(props: Props) {
+export function PageLayout(props: Props) {
   return (
     <>
       <Header />
-      <main>{props.category}</main>
+      <Main>{props.children}</Main>
       <Footer />
     </>
   )

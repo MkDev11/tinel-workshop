@@ -1,6 +1,5 @@
-import { WorkshopCategory } from '../enums'
-import { API_URL } from './constants'
-import { Workshop } from './types'
+import { API_WORKSHOPS_LIMIT, API_URL } from './constants'
+import { WorkshopList } from './types'
 
 export class WorkshopApi {
   private static instance: WorkshopApi
@@ -13,27 +12,13 @@ export class WorkshopApi {
     return WorkshopApi.instance
   }
 
-  public async getCategories(): Promise<WorkshopCategory[]> {
-    const requestUrl = `${API_URL}/categories`
-
-    const response = await fetch(requestUrl)
-
-    if (!response.ok) {
-      throw new Error('Invalid request')
-    }
-
-    const categories: WorkshopCategory[] = await response.json()
-
-    return categories
-  }
-
-  public async getWorkshops(
-    category: WorkshopCategory | null,
-    page: number
-  ): Promise<Workshop[]> {
-    const requestUrl = `${API_URL}/workshops?_page=${page}&_limit=9${
+  public async getWorkshopList(
+    page: number,
+    category?: string
+  ): Promise<WorkshopList> {
+    const requestUrl = `${API_URL}/workshops?_page=${page}&_limit=${API_WORKSHOPS_LIMIT}${
       category ? `&category=${category}` : ''
-    }`
+    }&_sort=date&_order=desc`
 
     const response = await fetch(requestUrl)
 
@@ -41,8 +26,9 @@ export class WorkshopApi {
       throw new Error('Invalid request')
     }
 
-    const workshops: Workshop[] = await response.json()
-
-    return workshops
+    return {
+      items: await response.json(),
+      total: parseInt(response.headers.get('x-total-count') || '0'),
+    }
   }
 }
