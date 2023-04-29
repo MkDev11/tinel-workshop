@@ -2,10 +2,24 @@
 
 footer {
   margin-top: auto;
-  text-align: center;
-  font-size: 0.9375rem;
-  line-height: 1.171875rem;
-  padding-block: 1.875rem;
   color: variables.$color-grey-text;
   background-color: variables.$color-grey-background;
+}
+
+.footer-content {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.84375rem;
+  line-height: 1.0625rem;
+  padding-top: 0.6875rem;
+  padding-bottom: 0.75rem;
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  .footer-content {
+    font-size: 0.9375rem;
+    line-height: 1.1875rem;
+    padding-top: 1.875rem;
+    padding-bottom: 1.9375rem;
+  }
 }

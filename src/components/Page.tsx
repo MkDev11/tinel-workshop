@@ -1,5 +1,7 @@
 import React from 'react'
 import { WorkshopCategory } from '../enums'
+import { Header } from './Header'
+import { Footer } from './Footer'
 
 type Props = {
   category: WorkshopCategory | null
@@ -8,9 +10,9 @@ type Props = {
 export function Page(props: Props) {
   return (
     <>
-      <header>HEADER</header>
+      <Header />
       <main>{props.category}</main>
-      <footer>FOOTER</footer>
+      <Footer />
     </>
   )
 }

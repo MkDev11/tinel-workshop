@@ -14,8 +14,6 @@ $font-family: 'Livvic', sans-serif;
 $box-shadow-card: 1px 2px 16px rgba(127, 127, 127, 0.25);
 $box-shadow-button: 1px 2px 8px 0px #7f7f7f40;
 
-$max-width-content: 68.5rem;
+$max-width-content: 82rem;
 
-$breakpoint-horizontal-card: 26rem;
-$breakpoint-sidebar: 48rem;
-$breakpoint-3-col: 60.5rem;
+$breakpoint-sidebar: 48rem; //TODO: check if this is the correct value

@@ -1,11 +1,9 @@
 @use './variables';
 
-.flex {
-  display: flex;
-}
-
-.align-center {
-  align-items: center;
+.container {
+  width: 100%;
+  max-width: variables.$max-width-content;
+  margin-inline: auto;
 }
 
 /* each element has to specify the -webkit-line-clamp value */
