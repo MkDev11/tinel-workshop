@@ -1,0 +1,11 @@
+@use '../general/variables';
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.9375rem;
+  line-height: 1.171875rem;
+  padding-block: 1.875rem;
+  color: variables.$color-grey-text;
+  background-color: variables.$color-grey-background;
+}

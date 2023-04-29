@@ -1,0 +1,29 @@
+@use '../general/variables';
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 3.75rem;
+  width: 100%;
+  max-width: variables.$max-width-content;
+  margin-inline: auto;
+
+  .cart {
+  }
+}
+
+.logo {
+  width: 5.625rem;
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  header {
+    height: 5.625rem;
+  }
+
+  .logo {
+    width: 6.5625rem;
+  }
+}

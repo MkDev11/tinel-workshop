@@ -1,0 +1,26 @@
+@use './variables';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: variables.$font-family;
+}
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  background-color: variables.$color-background;
+  min-height: 100vh;
+  min-width: 18rem;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+}
+
+/* TODO: main with sidebar */
