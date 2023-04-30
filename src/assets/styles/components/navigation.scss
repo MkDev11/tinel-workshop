@@ -1,0 +1,144 @@
+@use '../general/variables';
+
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+}
+
+.active-category {
+  display: none;
+}
+
+.navigation-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.1875rem;
+  color: variables.$color-grey-text;
+  padding-left: 2.3125rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5625rem;
+}
+
+.navigation-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+
+    path {
+      fill: variables.$color-black;
+    }
+  }
+
+  &__text {
+    font-size: 1.4375rem;
+    font-weight: 700;
+    line-height: 1.8125rem;
+    color: variables.$color-black;
+    text-transform: capitalize;
+
+    &.no-icon {
+      padding-left: 2.3125rem;
+    }
+  }
+}
+
+.navigation-item--active,
+.navigation-item:hover {
+  .navigation-item__icon {
+    path {
+      fill: variables.$color-blue;
+    }
+  }
+
+  .navigation-item__text {
+    color: variables.$color-blue;
+  }
+}
+
+.navigation-item--active {
+  .navigation-item__text {
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.1875rem;
+    text-underline-offset: 0.4375rem;
+  }
+}
+
+@media (max-width: variables.$breakpoint-sidebar) {
+  .nav-wrapper {
+    position: relative;
+  }
+
+  .active-category {
+    display: flex;
+    align-items: center;
+    gap: 0.1875rem;
+    width: fit-content;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    &__arrow {
+      width: 2rem;
+      height: 2rem;
+
+      path {
+        fill: variables.$color-blue;
+      }
+    }
+
+    &__text {
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.4375rem;
+      color: variables.$color-blue;
+      text-transform: capitalize;
+    }
+  }
+
+  .navigation-title {
+    display: none;
+  }
+
+  nav {
+    display: none;
+
+    &.navigation--expanded {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      width: fit-content;
+      padding: 0.875rem 1.25rem;
+      background-color: variables.$color-white;
+      box-shadow: variables.$box-shadow-mobile-nav;
+      border-radius: 0.5rem;
+      position: absolute;
+    }
+  }
+
+  .navigation-item {
+    gap: 0.625rem;
+
+    &__text {
+      font-size: 0.9375rem;
+      line-height: 1.1875rem;
+    }
+  }
+
+  .navigation-item--active {
+    .navigation-item__text {
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.3125rem;
+    }
+  }
+}

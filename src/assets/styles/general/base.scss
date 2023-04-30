@@ -12,15 +12,9 @@ body {
 }
 
 #root {
-  background-color: variables.$color-background;
+  background-color: variables.$color-white;
   min-height: 100vh;
   min-width: 18rem;
   display: flex;
   flex-direction: column;
 }
-
-main {
-  width: 100%;
-}
-
-/* TODO: main with sidebar */

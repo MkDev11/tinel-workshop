@@ -1,14 +1,16 @@
 import React from 'react'
-import { PageLayout } from '../components'
+import { Navigation, PageLayout } from '../components'
 import { WorkshopListContainer } from '../containers'
+import { WorkshopCategory } from '../enums'
 
 type Props = {
-  category?: string
+  category?: WorkshopCategory
 }
 
 export function WorkshopListPage(props: Props) {
   return (
     <PageLayout>
+      <Navigation activeCategory={props.category} />
       <WorkshopListContainer category={props.category} />
     </PageLayout>
   )

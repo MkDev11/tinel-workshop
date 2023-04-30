@@ -1,0 +1,21 @@
+@use '../general/variables';
+
+main {
+  margin-top: 3.75rem;
+}
+
+/* TODO: layout */
+.main-content {
+  padding-inline: 1.25rem;
+  padding-top: 1.5625rem;
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  main {
+    margin-top: 5.625rem;
+  }
+
+  .main-content {
+    padding-top: 3.75rem;
+  }
+}

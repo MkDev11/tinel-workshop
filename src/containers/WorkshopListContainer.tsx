@@ -8,5 +8,5 @@ type Props = {
 }
 
 export function WorkshopListContainer(props: Props) {
-  return <div>{props.category}</div>
+  return <div>LIST</div>
 }
