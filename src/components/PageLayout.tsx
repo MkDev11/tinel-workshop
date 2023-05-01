@@ -11,8 +11,10 @@ export function PageLayout(props: Props) {
   return (
     <>
       <Header />
-      <Main>{props.children}</Main>
-      <Footer />
+      <div className="scrollable-page-content">
+        <Main>{props.children}</Main>
+        <Footer />
+      </div>
     </>
   )
 }

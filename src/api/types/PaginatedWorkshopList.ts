@@ -1,6 +1,6 @@
 import { Workshop } from './Workshop'
 
-export type WorkshopList = {
+export type PaginatedWorkshopList = {
   items: Workshop[]
-  total: number
+  nextPage?: number
 }

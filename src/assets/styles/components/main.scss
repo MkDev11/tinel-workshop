@@ -1,21 +1,18 @@
 @use '../general/variables';
 
-main {
-  margin-top: 3.75rem;
-}
-
 /* TODO: layout */
 .main-content {
   padding-inline: 1.25rem;
   padding-top: 1.5625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
 }
 
 @media (min-width: variables.$breakpoint-sidebar) {
-  main {
-    margin-top: 5.625rem;
-  }
-
   .main-content {
     padding-top: 3.75rem;
+    flex-direction: row;
+    gap: 0;
   }
 }

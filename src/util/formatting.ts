@@ -1,5 +1,5 @@
 export class DateFormatter {
-  static EUROPEAN = new Intl.DateTimeFormat('en-US', {
+  static DEFAULT = new Intl.DateTimeFormat('de-DE', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -7,9 +7,16 @@ export class DateFormatter {
 }
 
 export class TimeFormatter {
-  static HOUR_MINUTES = new Intl.DateTimeFormat('en-US', {
+  static DEFAULT = new Intl.DateTimeFormat('en-US', {
     hour: 'numeric',
     minute: 'numeric',
-    hour12: false,
+    hourCycle: 'h23',
+  })
+}
+
+export class PriceFormatter {
+  static DEFAULT = new Intl.NumberFormat('de-DE', {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2,
   })
 }

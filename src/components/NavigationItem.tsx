@@ -1,27 +1,10 @@
 import classNames from 'classnames'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { WorkshopCategory } from '../enums'
-import {
-  BrushIcon as DesignIcon,
-  FrontendIcon,
-  BackendIcon,
-  FlashIcon as MarketingIcon,
-} from '../util'
-
-const NAVIGATION_ICON = {
-  [WorkshopCategory.DESIGN]: <DesignIcon className="navigation-item__icon" />,
-  [WorkshopCategory.FRONTEND]: (
-    <FrontendIcon className="navigation-item__icon" />
-  ),
-  [WorkshopCategory.BACKEND]: <BackendIcon className="navigation-item__icon" />,
-  [WorkshopCategory.MARKETING]: (
-    <MarketingIcon className="navigation-item__icon" />
-  ),
-}
+import { CategoryIcon } from './CategoryIcon'
 
 type Props = {
-  category?: WorkshopCategory
+  category?: string
 }
 
 export function NavigationItem(props: Props) {
@@ -35,7 +18,10 @@ export function NavigationItem(props: Props) {
       to={props.category ? `/${props.category}` : '/'}
       end={true}
     >
-      {props.category && NAVIGATION_ICON[props.category]}
+      <CategoryIcon
+        category={props.category}
+        className="navigation-item__icon"
+      />
       <span
         className={classNames('navigation-item__text', {
           'no-icon': !props.category,

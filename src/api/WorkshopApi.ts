@@ -1,5 +1,5 @@
 import { API_WORKSHOPS_LIMIT, API_URL } from './constants'
-import { WorkshopList } from './types'
+import { PaginatedWorkshopList } from './types'
 
 export class WorkshopApi {
   private static instance: WorkshopApi
@@ -15,7 +15,7 @@ export class WorkshopApi {
   public async getWorkshopList(
     page: number,
     category?: string
-  ): Promise<WorkshopList> {
+  ): Promise<PaginatedWorkshopList> {
     const requestUrl = `${API_URL}/workshops?_page=${page}&_limit=${API_WORKSHOPS_LIMIT}${
       category ? `&category=${category}` : ''
     }&_sort=date&_order=desc`
@@ -28,7 +28,11 @@ export class WorkshopApi {
 
     return {
       items: await response.json(),
-      total: parseInt(response.headers.get('x-total-count') || '0'),
+      nextPage:
+        page * API_WORKSHOPS_LIMIT <
+        parseInt(response.headers.get('x-total-count') || '0')
+          ? page + 1
+          : undefined,
     }
   }
 }

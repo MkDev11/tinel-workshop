@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.875rem;
+  min-width: 15rem;
+  max-width: 22.5rem;
+  flex-grow: 2;
 }
 
 .active-category {
@@ -15,6 +18,7 @@
   font-weight: 700;
   line-height: 1.1875rem;
   color: variables.$color-grey-text;
+  padding-top: 3.125rem;
   padding-left: 2.3125rem;
 }
 
@@ -22,12 +26,14 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 1.5625rem;
+  width: 100%;
 }
 
 .navigation-item {
   display: flex;
   align-items: center;
   gap: 0.3125rem;
+  width: fit-content;
 
   &__icon {
     width: 2rem;
@@ -75,6 +81,8 @@ nav {
 @media (max-width: variables.$breakpoint-sidebar) {
   .nav-wrapper {
     position: relative;
+    min-width: none;
+    max-width: none;
   }
 
   .active-category {
@@ -122,6 +130,7 @@ nav {
       background-color: variables.$color-white;
       box-shadow: variables.$box-shadow-mobile-nav;
       border-radius: 0.5rem;
+      z-index: 2;
       position: absolute;
     }
   }
@@ -132,12 +141,16 @@ nav {
     &__text {
       font-size: 0.9375rem;
       line-height: 1.1875rem;
+
+      &.no-icon {
+        padding-left: 2.625rem;
+      }
     }
   }
 
   .navigation-item--active {
     .navigation-item__text {
-      text-decoration-thickness: 2px;
+      text-decoration-thickness: 0.125rem;
       text-underline-offset: 0.3125rem;
     }
   }

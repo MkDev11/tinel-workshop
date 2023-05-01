@@ -7,14 +7,30 @@
   font-family: variables.$font-family;
 }
 
-body {
-  min-height: 100vh;
+html,
+body,
+#root {
+  height: 100vh;
 }
 
 #root {
-  background-color: variables.$color-white;
-  min-height: 100vh;
-  min-width: 18rem;
   display: flex;
   flex-direction: column;
+  background-color: variables.$color-white;
+  min-width: 18rem;
+}
+
+.scrollable-page-content {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3.75rem;
+  height: 100%;
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  .scrollable-page-content {
+    margin-top: 5.625rem;
+  }
 }

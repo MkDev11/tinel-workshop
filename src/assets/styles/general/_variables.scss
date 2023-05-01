@@ -1,10 +1,12 @@
 $color-yellow: #ffce25;
+$color-light-yellow: #ffe56d;
 $color-blue: #0097cc;
 $color-light-blue: #00aae4;
 $color-black: #1d1d1b;
 $color-white: #ffffff;
 $color-grey-text: #7f7f7f;
 $color-grey-background: rgba(127, 127, 127, 0.1);
+$color-grey-border: #f2f2f2;
 $color-red: #ff392e;
 $color-modal-backdrop: rgba(29, 29, 27, 0.75);
 
@@ -14,6 +16,9 @@ $box-shadow-card: 1px 2px 16px rgba(127, 127, 127, 0.25);
 $box-shadow-button: 1px 2px 8px 0px #7f7f7f40;
 $box-shadow-mobile-nav: 1px 2px 8px 0px #7f7f7f40;
 
-$max-width-content: 82rem;
+$max-width-content: 90rem;
 
-$breakpoint-sidebar: 48rem; //TODO: check if this is the correct value
+$breakpoint-card-datetime-price: 22rem;
+$breakpoint-sidebar: 38rem; /* 15 + 20 + 3 (2*1.25 + ~0.5) */
+$breakpoint-2-col: 60.5rem; /* 38 + 20 + 2.5 */
+$breakpoint-3-col: 83rem; /* 60.5 + 20 + 2.5 */
