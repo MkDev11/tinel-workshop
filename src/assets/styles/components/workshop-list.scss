@@ -50,9 +50,12 @@
   display: block;
   margin-inline: auto;
   margin-bottom: 2.1875rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.0625rem;
 }
 
-@media (min-width: variables.$breakpoint-sidebar) {
+@media (min-width: variables.$breakpoint-list-sidebar) {
   .workshop-list-wrapper {
     min-width: 20rem;
     max-width: 65rem;
@@ -81,17 +84,20 @@
 
   .load-more-button {
     margin-bottom: 3.4375rem;
+    height: 3.125rem;
+    font-size: 1.125rem;
+    line-height: 1.4375rem;
   }
 }
 
-@media (min-width: variables.$breakpoint-2-col) {
+@media (min-width: variables.$breakpoint-list-2-col) {
   .workshop-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: variables.$breakpoint-3-col) {
+@media (min-width: variables.$breakpoint-list-3-col) {
   .workshop-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -1,13 +1,13 @@
 import classNames from 'classnames'
 import React from 'react'
-import { Workshop } from '../api'
+import { WorkshopShort } from '../api'
 import { Spinner } from './Spinner'
 import { Button } from './Button'
 import { EmptyIcon } from '../util'
 import { WorkshopCard } from './WorkshopCard'
 
 type Props = {
-  workshops: Workshop[]
+  workshops: WorkshopShort[]
   loadingInitial: boolean
   loadingMore: boolean
   hasMore: boolean

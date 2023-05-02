@@ -1,6 +1,6 @@
-import { Workshop } from './Workshop'
+import { WorkshopShort } from './Workshop'
 
 export type PaginatedWorkshopList = {
-  items: Workshop[]
+  items: WorkshopShort[]
   nextPage?: number
 }

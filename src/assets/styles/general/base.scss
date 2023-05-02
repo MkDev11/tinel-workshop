@@ -22,14 +22,13 @@ body,
 
 .scrollable-page-content {
   overflow-y: auto;
-  scrollbar-gutter: stable;
   display: flex;
   flex-direction: column;
   margin-top: 3.75rem;
   height: 100%;
 }
 
-@media (min-width: variables.$breakpoint-sidebar) {
+@media (min-width: variables.$breakpoint-list-sidebar) {
   .scrollable-page-content {
     margin-top: 5.625rem;
   }

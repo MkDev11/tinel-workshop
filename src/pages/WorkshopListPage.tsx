@@ -9,7 +9,7 @@ type Props = {
 
 export function WorkshopListPage(props: Props) {
   return (
-    <PageLayout>
+    <PageLayout type="list">
       <Navigation activeCategory={props.category} />
       <WorkshopListContainer category={props.category} />
     </PageLayout>

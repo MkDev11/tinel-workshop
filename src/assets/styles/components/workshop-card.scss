@@ -61,22 +61,6 @@
   justify-content: space-between;
 }
 
-.workshop-card-price {
-  color: variables.$color-black;
-  font-weight: 700;
-
-  &__amount {
-    font-size: 1rem;
-    line-height: 1.5625rem;
-    margin-right: 0.125rem;
-  }
-
-  &__currency {
-    font-size: 0.625rem;
-    line-height: 1.0625rem;
-  }
-}
-
 .workshop-card-button {
   display: flex;
   align-items: center;
@@ -112,20 +96,7 @@
   }
 }
 
-@media (min-width: variables.$breakpoint-card-datetime-price) {
-  .workshop-card-price {
-    &__amount {
-      font-size: 1.25rem;
-      margin-right: 0.1875rem;
-    }
-
-    &__currency {
-      font-size: 0.84375rem;
-    }
-  }
-}
-
-@media (min-width: variables.$breakpoint-sidebar) {
+@media (min-width: variables.$breakpoint-list-2-col) {
   .workshop-card {
     width: 100%;
     height: 28.125rem;
@@ -173,6 +144,9 @@
   .workshop-card-button {
     width: 100%;
     height: 3.125rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.4375rem;
 
     &__icon {
       display: none;

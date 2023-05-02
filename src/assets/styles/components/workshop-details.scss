@@ -1,0 +1,280 @@
+@use '../general/variables';
+
+.workshop-details {
+  width: 100%;
+  position: relative;
+}
+
+.workshop-details-category-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.25rem;
+  background-color: variables.$color-black;
+  border-radius: 0.5625rem;
+
+  path {
+    fill: variables.$color-white;
+  }
+}
+
+.workshop-details-img {
+  width: 100%;
+  height: 15.625rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1.375rem;
+
+  & + .workshop-details-category-icon {
+    position: absolute;
+    top: calc(15.625rem - 1.25rem);
+    right: 0.75rem;
+  }
+}
+
+.workshop-details-content {
+  margin-bottom: 5rem;
+}
+
+.workshop-details-extras-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-left: 1.375rem;
+  margin-bottom: 0.75rem;
+
+  .workshop-details-category-icon {
+    display: none;
+  }
+}
+
+.workshop-details-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 2.6875rem;
+  margin-bottom: 0.625rem;
+  color: variables.$color-blue;
+}
+
+.workshop-details-author {
+  font-weight: 700;
+  line-height: 1.4375rem;
+  color: variables.$color-black;
+  padding-left: 1.375rem;
+  margin-bottom: 1.25rem;
+
+  &__with {
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    margin-right: 0.3125rem;
+  }
+
+  &__name {
+    font-size: 1.15625rem;
+  }
+}
+
+.workshop-details-description {
+  font-size: 0.90625rem;
+  font-weight: 500;
+  line-height: 1.28125rem;
+  padding-left: 1.375rem;
+}
+
+.workshop-details-basket {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: variables.$color-white;
+  box-shadow: variables.$box-shadow-mobile-basket;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding: 1.125rem 1.25rem;
+  z-index: 2;
+}
+
+.workshop-details-basket-title {
+  display: none;
+}
+
+.workshop-details-basket-price-and-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.workshop-details-basket-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.workshop-details-basket-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1.625rem;
+  height: 2.8125rem;
+
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+
+    path {
+      fill: variables.$color-black;
+    }
+  }
+
+  &__text {
+    display: none;
+  }
+}
+
+.workshop-details-basket-subtotal {
+  display: none;
+}
+
+.test-input {
+  width: 4.3125rem;
+  border: 1px solid variables.$color-blue;
+  border-radius: 0.5625rem;
+  height: 2.8125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 25rem) {
+  .workshop-details-basket-button {
+    &__icon {
+      display: none;
+    }
+
+    &__text {
+      display: block;
+      font-size: 0.90625rem;
+      font-weight: 700;
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-details-static-basket) {
+  .workshop-details {
+    position: static;
+    padding-bottom: 0;
+  }
+
+  .workshop-details-img {
+    height: 23.875rem;
+    margin-bottom: 2.5rem;
+
+    & + .workshop-details-category-icon {
+      display: none;
+    }
+  }
+
+  .workshop-details-content {
+    display: grid;
+    grid-template-columns: auto 22.5rem;
+    gap: 5rem;
+    margin-bottom: 10rem;
+  }
+
+  .workshop-details-extras-row {
+    gap: 1.375rem;
+    padding-left: 0;
+    margin-bottom: 1.25rem;
+
+    .workshop-details-category-icon {
+      display: block;
+    }
+  }
+
+  .workshop-details-title {
+    font-size: 3.75rem;
+    line-height: 4.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .workshop-details-author {
+    line-height: 2.125rem;
+    margin-bottom: 2.5rem;
+    padding-left: 0;
+
+    &__with {
+      font-size: 1.125rem;
+      margin-right: 0.625rem;
+    }
+
+    &__name {
+      font-size: 1.6875rem;
+    }
+  }
+
+  .workshop-details-description {
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
+    padding-left: 0;
+  }
+
+  .workshop-details-basket {
+    position: static;
+    display: block;
+    width: 22.5rem;
+    height: 20rem;
+    padding: 3.125rem 2.5rem;
+    border-radius: 0.5rem;
+    box-shadow: variables.$box-shadow-desktop-basket;
+  }
+
+  .workshop-details-basket-title {
+    display: block;
+    font-size: 1.4375rem;
+    font-weight: 700;
+    line-height: 1.8125;
+    margin-bottom: 1.25rem;
+  }
+
+  .workshop-details-basket-price-and-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.875rem;
+  }
+
+  .workshop-details-basket-actions {
+    gap: 0.71875rem;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+
+  .test-input {
+    min-width: 5rem;
+    height: 3.75rem;
+  }
+
+  .workshop-details-basket-button {
+    height: 3.75rem;
+    width: 100%;
+
+    &__text {
+      font-size: 1.125rem;
+    }
+  }
+
+  .workshop-details-basket-subtotal {
+    display: block;
+    font-size: 0.9375;
+    font-weight: 600;
+    line-height: 1.1875rem;
+    color: variables.$color-grey-text;
+    margin-left: 5.71875rem;
+  }
+}
+
+@media (min-width: variables.$breakpoint-details-sidebar) {
+  .workshop-details {
+    grid-area: workshop-details;
+  }
+}

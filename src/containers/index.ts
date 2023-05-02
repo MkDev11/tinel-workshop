@@ -1,2 +1,2 @@
-export * from './WorkshopContainer'
+export * from './WorkshopDetailsContainer'
 export * from './WorkshopListContainer'

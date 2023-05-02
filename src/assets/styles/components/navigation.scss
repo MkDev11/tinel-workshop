@@ -78,11 +78,12 @@ nav {
   }
 }
 
-@media (max-width: variables.$breakpoint-sidebar) {
+@media (max-width: calc(variables.$breakpoint-list-sidebar - 1px)) {
   .nav-wrapper {
     position: relative;
     min-width: none;
     max-width: none;
+    margin-bottom: 0.875rem;
   }
 
   .active-category {

@@ -1,0 +1,90 @@
+@use '../general/variables';
+
+.price {
+  color: variables.$color-black;
+  font-weight: 700;
+}
+
+.price--card {
+  .price__amount {
+    font-size: 1rem;
+    line-height: 1.5625rem;
+    margin-right: 0.125rem;
+  }
+
+  .price__currency {
+    font-size: 0.625rem;
+    line-height: 1.0625rem;
+  }
+}
+
+@media (min-width: variables.$breakpoint-list-full-card) {
+  .price--card {
+    .price__amount {
+      font-size: 1.25rem;
+      margin-right: 0.1875rem;
+    }
+
+    .price__currency {
+      font-size: 0.84375rem;
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-list-sidebar) {
+  .price--card {
+    .price__amount {
+      font-size: 1.8125rem;
+      line-height: 2.25rem;
+      margin-right: 0.3125rem;
+    }
+
+    .price__currency {
+      font-size: 0.9375rem;
+      line-height: 1.1875rem;
+    }
+  }
+}
+
+.price--details {
+  .price__amount {
+    font-size: 1.25rem;
+    line-height: 1.5625rem;
+    margin-right: 0.1875rem;
+  }
+
+  .price__currency {
+    font-size: 0.84375rem;
+    line-height: 1.0625rem;
+  }
+}
+
+/* @media (min-width: variables.$breakpoint-details-move-category) {
+  .price--details {
+    .price__amount {
+      font-size: 1.75rem;
+      line-height: 2.34375rem;
+      margin-right: 0.25rem;
+    }
+
+    .price__currency {
+      font-size: 1.125rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+ */
+@media (min-width: variables.$breakpoint-details-static-basket) {
+  .price--details {
+    .price__amount {
+      font-size: 2.5rem;
+      line-height: 3.125rem;
+      margin-right: 0.3125rem;
+    }
+
+    .price__currency {
+      font-size: 1.4375rem;
+      line-height: 1.8125rem;
+    }
+  }
+}

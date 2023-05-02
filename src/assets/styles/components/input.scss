@@ -1,0 +1,21 @@
+@use '../general/variables';
+
+.number-input {
+  height: 2.8125rem;
+  width: 4.3125rem;
+  padding-left: 1rem;
+  padding-right: 0.375rem;
+  font-size: 1.15625rem;
+  font-weight: 700;
+  border: 1px solid variables.$color-blue;
+  border-radius: 0.5625rem;
+}
+
+@media (min-width: variables.$breakpoint-details-static-basket) {
+  .number-input {
+    height: 3.75rem;
+    width: 5rem;
+    padding-right: 0.625rem;
+    font-size: 1.4375rem;
+  }
+}

@@ -1,4 +1,6 @@
-export type Workshop = {
+import { User } from './User'
+
+export type WorkshopShort = {
   id: string
   title: string
   desc: string
@@ -7,4 +9,8 @@ export type Workshop = {
   date: string
   imageUrl: string
   userId: string
+}
+
+export type WorkshopFull = WorkshopShort & {
+  user: User
 }

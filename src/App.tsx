@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WorkshopCategory } from './enums'
-import { WorkshopListPage, WorkshopPage } from './pages'
+import { WorkshopListPage, WorkshopDetailsPage } from './pages'
 
 const queryClient = new QueryClient()
 
@@ -28,7 +28,7 @@ export function App() {
             path={`/${WorkshopCategory.MARKETING}`}
             element={<WorkshopListPage category={WorkshopCategory.MARKETING} />}
           />
-          <Route path="/workshops/:id" element={<WorkshopPage />} />
+          <Route path="/workshops/:id" element={<WorkshopDetailsPage />} />
           <Route
             path="*"
             element={

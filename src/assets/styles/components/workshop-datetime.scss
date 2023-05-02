@@ -1,0 +1,78 @@
+@use '../general/variables';
+
+.datetime {
+  display: flex;
+  align-items: center;
+  gap: 0.1875rem;
+
+  &__icon {
+    path {
+      fill: variables.$color-black;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    color: variables.$color-black;
+  }
+}
+
+.datetime--card {
+  .datetime__icon {
+    display: none;
+  }
+
+  .datetime__text {
+    font-size: 0.84375rem;
+    line-height: 1.0625rem;
+  }
+}
+
+.datetime--details {
+  .datetime__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .datetime__text {
+    font-size: 0.90625rem;
+    line-height: 1.125rem;
+  }
+}
+
+@media (min-width: variables.$breakpoint-list-full-card) {
+  .datetime--card {
+    .datetime__icon {
+      display: block;
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-list-sidebar) {
+  .datetime--card {
+    .datetime__text {
+      font-size: 0.9375rem;
+      line-height: 1.0625rem;
+    }
+  }
+}
+
+/* @media (min-width: variables.$breakpoint-details-move-category) {
+  .datetime--details {
+    .datetime__text {
+      font-size: 1.125rem;
+      line-height: 1.4375rem;
+    }
+  }
+} */
+
+@media (min-width: variables.$breakpoint-details-static-basket) {
+  .datetime--details {
+    .datetime__text {
+      font-size: 1.125rem;
+      line-height: 1.4375rem;
+    }
+  }
+}

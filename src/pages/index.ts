@@ -1,2 +1,2 @@
+export * from './WorkshopDetailsPage'
 export * from './WorkshopListPage'
-export * from './WorkshopPage'
