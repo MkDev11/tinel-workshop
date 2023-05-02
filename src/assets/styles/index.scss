@@ -3,6 +3,7 @@
 @use './general/typography.scss';
 @use './general/util.scss';
 
+@use './components/browse-workshops-list-wrapper.scss';
 @use './components/button.scss';
 @use './components/footer.scss';
 @use './components/go-back.scss';
@@ -10,10 +11,7 @@
 @use './components/input.scss';
 @use './components/main.scss';
 @use './components/navigation.scss';
-@use './components/similar-workshops.scss';
 @use './components/spinner.scss';
 @use './components/workshop-card.scss';
-@use './components/workshop-datetime.scss';
-@use './components/workshop-details.scss';
+@use './components/workshop-info.scss';
 @use './components/workshop-list.scss';
-@use './components/workshop-price.scss';

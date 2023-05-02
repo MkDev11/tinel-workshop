@@ -4,35 +4,64 @@
   display: flex;
   flex-direction: column;
   gap: 1.875rem;
-  min-width: 15rem;
-  max-width: 22.5rem;
-  flex-grow: 2;
+  margin-bottom: 0.875rem;
+  position: relative;
 }
 
 .active-category {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: 0.1875rem;
+  width: fit-content;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &__arrow {
+    width: 2rem;
+    height: 2rem;
+
+    path {
+      fill: variables.$color-blue;
+    }
+  }
+
+  &__text {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.4375rem;
+    color: variables.$color-blue;
+    text-transform: capitalize;
+  }
 }
 
 .navigation-title {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  line-height: 1.1875rem;
-  color: variables.$color-grey-text;
-  padding-top: 3.125rem;
-  padding-left: 2.3125rem;
+  display: none;
 }
 
 nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5625rem;
-  width: 100%;
+  display: none;
+
+  &.navigation--expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    width: fit-content;
+    padding: 0.875rem 1.25rem;
+    background-color: variables.$color-white;
+    box-shadow: variables.$box-shadow-mobile-nav;
+    border-radius: 0.5rem;
+    z-index: 2;
+    position: absolute;
+  }
 }
 
 .navigation-item {
   display: flex;
   align-items: center;
-  gap: 0.3125rem;
+  gap: 0.625rem;
   width: fit-content;
 
   &__icon {
@@ -45,14 +74,14 @@ nav {
   }
 
   &__text {
-    font-size: 1.4375rem;
+    font-size: 0.9375rem;
     font-weight: 700;
-    line-height: 1.8125rem;
+    line-height: 1.1875rem;
     color: variables.$color-black;
     text-transform: capitalize;
 
     &.no-icon {
-      padding-left: 2.3125rem;
+      padding-left: 2.625rem;
     }
   }
 }
@@ -73,86 +102,59 @@ nav {
 .navigation-item--active {
   .navigation-item__text {
     text-decoration-line: underline;
-    text-decoration-thickness: 0.1875rem;
-    text-underline-offset: 0.4375rem;
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 0.3125rem;
   }
 }
 
-@media (max-width: calc(variables.$breakpoint-list-sidebar - 1px)) {
+@media (min-width: variables.$breakpoint-sidebar) {
   .nav-wrapper {
-    position: relative;
-    min-width: none;
-    max-width: none;
-    margin-bottom: 0.875rem;
+    position: static;
+    min-width: 15rem;
+    max-width: 22.5rem;
+    flex-grow: 2;
+    margin-bottom: 0;
   }
 
   .active-category {
-    display: flex;
-    align-items: center;
-    gap: 0.1875rem;
-    width: fit-content;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
-
-    &__arrow {
-      width: 2rem;
-      height: 2rem;
-
-      path {
-        fill: variables.$color-blue;
-      }
-    }
-
-    &__text {
-      font-size: 1.125rem;
-      font-weight: 700;
-      line-height: 1.4375rem;
-      color: variables.$color-blue;
-      text-transform: capitalize;
-    }
+    display: none;
   }
 
   .navigation-title {
-    display: none;
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.1875rem;
+    color: variables.$color-grey-text;
+    padding-top: 3.125rem;
+    padding-left: 2.3125rem;
   }
 
-  nav {
-    display: none;
-
-    &.navigation--expanded {
-      display: flex;
-      flex-direction: column;
-      gap: 0.875rem;
-      width: fit-content;
-      padding: 0.875rem 1.25rem;
-      background-color: variables.$color-white;
-      box-shadow: variables.$box-shadow-mobile-nav;
-      border-radius: 0.5rem;
-      z-index: 2;
-      position: absolute;
-    }
+  nav,
+  nav.navigation--expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+    width: 100%;
   }
 
   .navigation-item {
-    gap: 0.625rem;
+    gap: 0.3125rem;
 
     &__text {
-      font-size: 0.9375rem;
-      line-height: 1.1875rem;
+      font-size: 1.4375rem;
+      line-height: 1.8125rem;
 
       &.no-icon {
-        padding-left: 2.625rem;
+        padding-left: 2.3125rem;
       }
     }
   }
 
   .navigation-item--active {
     .navigation-item__text {
-      text-decoration-thickness: 0.125rem;
-      text-underline-offset: 0.3125rem;
+      text-decoration-thickness: 0.1875rem;
+      text-underline-offset: 0.4375rem;
     }
   }
 }

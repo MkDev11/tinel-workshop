@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WorkshopCategory } from './enums'
-import { WorkshopListPage, WorkshopDetailsPage } from './pages'
+import { BrowseWorkshopsPage, WorkshopInfoPage } from './pages'
 
 const queryClient = new QueryClient()
 
@@ -11,24 +11,30 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          <Route path={''} element={<WorkshopListPage />} />
+          <Route path={''} element={<BrowseWorkshopsPage />} />
           <Route
             path={`/${WorkshopCategory.DESIGN}`}
-            element={<WorkshopListPage category={WorkshopCategory.DESIGN} />}
+            element={<BrowseWorkshopsPage category={WorkshopCategory.DESIGN} />}
           />
           <Route
             path={`/${WorkshopCategory.FRONTEND}`}
-            element={<WorkshopListPage category={WorkshopCategory.FRONTEND} />}
+            element={
+              <BrowseWorkshopsPage category={WorkshopCategory.FRONTEND} />
+            }
           />
           <Route
             path={`/${WorkshopCategory.BACKEND}`}
-            element={<WorkshopListPage category={WorkshopCategory.BACKEND} />}
+            element={
+              <BrowseWorkshopsPage category={WorkshopCategory.BACKEND} />
+            }
           />
           <Route
             path={`/${WorkshopCategory.MARKETING}`}
-            element={<WorkshopListPage category={WorkshopCategory.MARKETING} />}
+            element={
+              <BrowseWorkshopsPage category={WorkshopCategory.MARKETING} />
+            }
           />
-          <Route path="/workshops/:id" element={<WorkshopDetailsPage />} />
+          <Route path="/workshops/:id" element={<WorkshopInfoPage />} />
           <Route
             path="*"
             element={

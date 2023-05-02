@@ -1,0 +1,74 @@
+@use '../general/variables';
+
+.browse-workshops-list-wrapper {
+  margin-bottom: 2.1875rem;
+}
+
+.browse-workshops-list-wrapper__title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  color: variables.$color-black;
+}
+
+.browse-workshops-list-wrapper__subtitle {
+  font-size: 0.84375rem;
+  font-weight: 700;
+  line-height: 1.0625rem;
+  color: variables.$color-grey-text;
+  margin-bottom: 1.125rem;
+
+  .displayed-count {
+    color: variables.$color-black;
+  }
+}
+
+.empty-icon {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin-top: 9rem;
+  margin-inline: auto;
+
+  path {
+    fill: variables.$color-black;
+  }
+}
+
+.load-more-button {
+  display: block;
+  margin-inline: auto;
+  margin-top: 1.875rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4375rem;
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  .browse-workshops-list-wrapper {
+    margin-bottom: 3.4375rem;
+    min-width: 20rem;
+    max-width: 65rem;
+    flex-grow: 1;
+
+    &.full {
+      margin-bottom: 9.0625rem;
+    }
+  }
+
+  .browse-workshops-list-wrapper__title {
+    font-size: 2.5rem;
+    line-height: 3.125rem;
+  }
+
+  .browse-workshops-list-wrapper__subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.1875rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .load-more-button {
+    margin-top: 2.5rem;
+    height: 3.125rem;
+  }
+}

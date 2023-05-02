@@ -20,10 +20,10 @@ $box-shadow-desktop-basket: 1px 2px 16px 0px #7f7f7f40;
 
 $max-width-content: 90rem;
 
-$breakpoint-list-full-card: 22rem;
-$breakpoint-list-sidebar: 38rem; /* 15 + 20 + 3 (2*1.25 + ~0.5) */
-$breakpoint-list-2-col: 60.5rem; /* 38 + 20 + 2.5 */
-$breakpoint-list-3-col: 83rem; /* 60.5 + 20 + 2.5 */
+$breakpoint-sidebar: 40rem;
 
-$breakpoint-details-static-basket: 60.5rem;
-$breakpoint-details-sidebar: 90rem;
+$breakpoint-list-full-card: 22rem;
+$breakpoint-list-2-col: 60.5rem;
+$breakpoint-list-3-col: 83rem;
+
+$breakpoint-info-static-basket: 83rem;

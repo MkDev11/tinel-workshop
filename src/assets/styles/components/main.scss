@@ -1,5 +1,9 @@
 @use '../general/variables';
 
+main {
+  margin-top: 3.75rem;
+}
+
 .main-content {
   padding-inline: 1.25rem;
   padding-top: 1.5625rem;
@@ -7,21 +11,24 @@
   flex-direction: column;
 }
 
-@media (min-width: variables.$breakpoint-list-sidebar) {
-  .main-content.list {
+@media (min-width: variables.$breakpoint-sidebar) {
+  main {
+    margin-top: 5.625rem;
+  }
+
+  .main-content.browse {
     padding-top: 3.75rem;
     flex-direction: row;
   }
 }
 
-@media (min-width: variables.$breakpoint-details-sidebar) {
-  .main-content.details {
+@media (min-width: variables.$breakpoint-sidebar) {
+  main {
+    margin-top: 5.625rem;
+  }
+
+  .main-content.info {
     padding-top: 3.75rem;
-    display: grid;
-    grid-template-columns: 22.5rem 65rem;
-    grid-template-rows: repeat(2, auto);
-    grid-template-areas:
-      'go-back workshop-details'
-      '. similar-workshops';
+    flex-direction: row;
   }
 }

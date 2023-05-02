@@ -15,7 +15,7 @@ footer {
   padding-bottom: 0.75rem;
 }
 
-@media (min-width: variables.$breakpoint-list-sidebar) {
+@media (min-width: variables.$breakpoint-sidebar) {
   .footer-content {
     font-size: 0.9375rem;
     line-height: 1.1875rem;

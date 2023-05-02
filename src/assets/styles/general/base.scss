@@ -7,10 +7,9 @@
   font-family: variables.$font-family;
 }
 
-html,
 body,
 #root {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #root {
@@ -18,18 +17,4 @@ body,
   flex-direction: column;
   background-color: variables.$color-white;
   min-width: 18rem;
-}
-
-.scrollable-page-content {
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  margin-top: 3.75rem;
-  height: 100%;
-}
-
-@media (min-width: variables.$breakpoint-list-sidebar) {
-  .scrollable-page-content {
-    margin-top: 5.625rem;
-  }
 }

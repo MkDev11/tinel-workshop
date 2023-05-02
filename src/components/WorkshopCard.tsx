@@ -1,12 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { WorkshopShort } from '../api'
-import { CartIcon, PriceFormatter } from '../util'
-import { WorkshopDate } from './WorkshopDate'
-import { WorkshopTime } from './WorkshopTime'
+import {
+  CalendarIcon,
+  CartIcon,
+  ClockIcon,
+  DateFormatter,
+  PriceFormatter,
+  TimeFormatter,
+} from '../util'
 import { Button } from './Button'
 import { CategoryIcon } from './CategoryIcon'
-import { WorkshopPrice } from './WorkshopPrice'
 
 const DEFAULT_IMAGE_URL = '/default-workshop-img.svg'
 
@@ -40,8 +44,18 @@ export function WorkshopCard(props: Props) {
       />
       <div className="workshop-card__text-content">
         <div className="workshop-card-datetime-row">
-          <WorkshopDate date={props.workshop.date} className="datetime--card" />
-          <WorkshopTime date={props.workshop.date} className="datetime--card" />
+          <div className="workshop-card-datetime">
+            <CalendarIcon className="workshop-card-datetime__icon" />
+            <span className="workshop-card-datetime__text">
+              {DateFormatter.DEFAULT.format(new Date(props.workshop.date))}
+            </span>
+          </div>
+          <div className="workshop-card-datetime">
+            <ClockIcon className="workshop-card-datetime__icon" />
+            <span className="workshop-card-datetime__text">
+              {TimeFormatter.DEFAULT.format(new Date(props.workshop.date))}
+            </span>
+          </div>
         </div>
         <div
           className="workshop-card-title truncate tab-focus"
@@ -54,7 +68,12 @@ export function WorkshopCard(props: Props) {
           {props.workshop.title}
         </div>
         <div className="workshop-card-action-row">
-          <WorkshopPrice price={props.workshop.price} className="price--card" />
+          <div className="workshop-card-price">
+            <span className="workshop-card-price__amount">
+              {PriceFormatter.DEFAULT.format(props.workshop.price)}
+            </span>
+            <span className="workshop-card-price__currency">EUR</span>
+          </div>
           <Button variant="yellow" className="workshop-card-button">
             <CartIcon className="workshop-card-button__icon" />
             <span className="workshop-card-button__text">Add to cart</span>

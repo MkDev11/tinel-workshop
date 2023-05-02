@@ -40,6 +40,23 @@
   margin-bottom: 0.25rem;
 }
 
+.workshop-card-datetime {
+  display: flex;
+  align-items: center;
+  gap: 0.1875rem;
+
+  &__icon {
+    display: none;
+  }
+
+  &__text {
+    color: variables.$color-black;
+    font-size: 0.84375rem;
+    font-weight: 700;
+    line-height: 1.0625rem;
+  }
+}
+
 .workshop-card-title {
   font-size: 1.1875rem;
   font-weight: 700;
@@ -59,6 +76,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.workshop-card-price {
+  color: variables.$color-black;
+  font-weight: 700;
+
+  &__amount {
+    font-size: 1rem;
+    line-height: 1.5625rem;
+    margin-right: 0.125rem;
+  }
+
+  &__currency {
+    font-size: 0.625rem;
+    line-height: 1.0625rem;
+  }
 }
 
 .workshop-card-button {
@@ -96,6 +129,29 @@
   }
 }
 
+@media (min-width: variables.$breakpoint-list-full-card) {
+  .workshop-card-price {
+    &__amount {
+      font-size: 1.25rem;
+      margin-right: 0.1875rem;
+    }
+
+    &__currency {
+      font-size: 0.84375rem;
+    }
+  }
+
+  .workshop-card-datetime__icon {
+    display: block;
+    width: 1.125rem;
+    height: 1.125rem;
+
+    path {
+      fill: variables.$color-black;
+    }
+  }
+}
+
 @media (min-width: variables.$breakpoint-list-2-col) {
   .workshop-card {
     width: 100%;
@@ -115,6 +171,11 @@
 
   .workshop-card-datetime-row {
     margin-bottom: 0.6875rem;
+  }
+
+  .workshop-card-datetime__text {
+    font-size: 0.9375rem;
+    line-height: 1.0625rem;
   }
 
   .workshop-card-title {

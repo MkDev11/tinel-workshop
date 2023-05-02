@@ -11,7 +11,7 @@
   border-radius: 0.5625rem;
 }
 
-@media (min-width: variables.$breakpoint-details-static-basket) {
+@media (min-width: variables.$breakpoint-info-static-basket) {
   .number-input {
     height: 3.75rem;
     width: 5rem;

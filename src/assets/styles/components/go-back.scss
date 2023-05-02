@@ -29,9 +29,11 @@
   }
 }
 
-@media (min-width: variables.$breakpoint-details-sidebar) {
+@media (min-width: variables.$breakpoint-sidebar) {
   .go-back-wrapper {
-    grid-area: go-back;
+    min-width: 15rem;
+    max-width: 22.5rem;
+    flex-grow: 2;
   }
 
   .go-back {

@@ -4,7 +4,7 @@ import { Footer } from './Footer'
 import { Main } from './Main'
 
 type Props = {
-  type: 'list' | 'details'
+  type: 'browse' | 'info'
   children: React.ReactNode
 }
 
@@ -12,10 +12,8 @@ export function PageLayout(props: Props) {
   return (
     <>
       <Header />
-      <div className="scrollable-page-content">
-        <Main type={props.type}>{props.children}</Main>
-        <Footer />
-      </div>
+      <Main type={props.type}>{props.children}</Main>
+      <Footer />
     </>
   )
 }

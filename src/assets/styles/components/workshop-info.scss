@@ -1,11 +1,11 @@
 @use '../general/variables';
 
-.workshop-details {
+.workshop-info {
   width: 100%;
   position: relative;
 }
 
-.workshop-details-category-icon {
+.workshop-info-category-icon {
   height: 2.5rem;
   width: 2.5rem;
   padding: 0.25rem;
@@ -17,37 +17,59 @@
   }
 }
 
-.workshop-details-img {
+.workshop-info-img {
   width: 100%;
   height: 15.625rem;
   object-fit: cover;
   border-radius: 0.5rem;
   margin-bottom: 1.375rem;
 
-  & + .workshop-details-category-icon {
+  & + .workshop-info-category-icon {
     position: absolute;
     top: calc(15.625rem - 1.25rem);
     right: 0.75rem;
   }
 }
 
-.workshop-details-content {
-  margin-bottom: 5rem;
+.workshop-info-content {
+  margin-bottom: 4rem;
 }
 
-.workshop-details-extras-row {
+.workshop-info-extras-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   padding-left: 1.375rem;
   margin-bottom: 0.75rem;
 
-  .workshop-details-category-icon {
+  .workshop-info-category-icon {
     display: none;
   }
 }
 
-.workshop-details-title {
+.workshop-info-datetime {
+  display: flex;
+  align-items: center;
+  gap: 0.1875rem;
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    path {
+      fill: variables.$color-black;
+    }
+  }
+
+  &__text {
+    color: variables.$color-black;
+    font-size: 0.90625rem;
+    font-weight: 700;
+    line-height: 1.125rem;
+  }
+}
+
+.workshop-info-title {
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 2.6875rem;
@@ -55,7 +77,7 @@
   color: variables.$color-blue;
 }
 
-.workshop-details-author {
+.workshop-info-author {
   font-weight: 700;
   line-height: 1.4375rem;
   color: variables.$color-black;
@@ -73,14 +95,14 @@
   }
 }
 
-.workshop-details-description {
+.workshop-info-description {
   font-size: 0.90625rem;
   font-weight: 500;
   line-height: 1.28125rem;
   padding-left: 1.375rem;
 }
 
-.workshop-details-basket {
+.workshop-info-basket {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -94,28 +116,44 @@
   z-index: 2;
 }
 
-.workshop-details-basket-title {
+.workshop-info-basket-title {
   display: none;
 }
 
-.workshop-details-basket-price-and-actions {
+.workshop-info-basket-price-and-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.workshop-details-basket-actions {
+.workshop-info-basket-price {
+  color: variables.$color-black;
+  font-weight: 700;
+
+  &__amount {
+    font-size: 1.125rem;
+    line-height: 1.5625rem;
+    margin-right: 0.15rem;
+  }
+
+  &__currency {
+    font-size: 0.75rem;
+    line-height: 1.0625rem;
+  }
+}
+
+.workshop-info-basket-actions {
   display: flex;
   align-items: center;
   gap: 0.625rem;
 }
 
-.workshop-details-basket-button {
+.workshop-info-basket-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: 1.625rem;
+  padding-inline: 1rem;
   height: 2.8125rem;
 
   &__icon {
@@ -132,22 +170,37 @@
   }
 }
 
-.workshop-details-basket-subtotal {
+.workshop-info-basket-subtotal {
   display: none;
 }
 
-.test-input {
-  width: 4.3125rem;
-  border: 1px solid variables.$color-blue;
-  border-radius: 0.5625rem;
-  height: 2.8125rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.similar-workshops {
+  margin-bottom: 6rem;
+
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
+  }
 }
 
 @media (min-width: 25rem) {
-  .workshop-details-basket-button {
+  .workshop-info-basket-price {
+    &__amount {
+      font-size: 1.25rem;
+      margin-right: 0.1875rem;
+    }
+
+    &__currency {
+      font-size: 0.84375rem;
+    }
+  }
+
+  .workshop-info-basket-button {
+    padding-inline: 1.625rem;
+
     &__icon {
       display: none;
     }
@@ -160,45 +213,58 @@
   }
 }
 
-@media (min-width: variables.$breakpoint-details-static-basket) {
-  .workshop-details {
+@media (min-width: variables.$breakpoint-sidebar) {
+  .workshop-info {
+    min-width: 20rem;
+    max-width: 65rem;
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: variables.$breakpoint-info-static-basket) {
+  .workshop-info {
     position: static;
     padding-bottom: 0;
   }
 
-  .workshop-details-img {
+  .workshop-info-img {
     height: 23.875rem;
     margin-bottom: 2.5rem;
 
-    & + .workshop-details-category-icon {
+    & + .workshop-info-category-icon {
       display: none;
     }
   }
 
-  .workshop-details-content {
+  .workshop-info-content {
     display: grid;
     grid-template-columns: auto 22.5rem;
     gap: 5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 6rem;
   }
 
-  .workshop-details-extras-row {
+  .workshop-info-extras-row {
     gap: 1.375rem;
     padding-left: 0;
     margin-bottom: 1.25rem;
 
-    .workshop-details-category-icon {
+    .workshop-info-category-icon {
       display: block;
     }
   }
 
-  .workshop-details-title {
+  .workshop-info-datetime__text {
+    font-size: 1.125rem;
+    line-height: 1.4375rem;
+  }
+
+  .workshop-info-title {
     font-size: 3.75rem;
     line-height: 4.5rem;
     margin-bottom: 1.25rem;
   }
 
-  .workshop-details-author {
+  .workshop-info-author {
     line-height: 2.125rem;
     margin-bottom: 2.5rem;
     padding-left: 0;
@@ -213,13 +279,13 @@
     }
   }
 
-  .workshop-details-description {
+  .workshop-info-description {
     font-size: 1.125rem;
     line-height: 1.6875rem;
     padding-left: 0;
   }
 
-  .workshop-details-basket {
+  .workshop-info-basket {
     position: static;
     display: block;
     width: 22.5rem;
@@ -229,7 +295,7 @@
     box-shadow: variables.$box-shadow-desktop-basket;
   }
 
-  .workshop-details-basket-title {
+  .workshop-info-basket-title {
     display: block;
     font-size: 1.4375rem;
     font-weight: 700;
@@ -237,24 +303,32 @@
     margin-bottom: 1.25rem;
   }
 
-  .workshop-details-basket-price-and-actions {
+  .workshop-info-basket-price-and-actions {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.875rem;
   }
 
-  .workshop-details-basket-actions {
+  .workshop-info-basket-price {
+    &__amount {
+      font-size: 2.5rem;
+      line-height: 3.125rem;
+      margin-right: 0.3125rem;
+    }
+
+    &__currency {
+      font-size: 1.4375rem;
+      line-height: 1.8125rem;
+    }
+  }
+
+  .workshop-info-basket-actions {
     gap: 0.71875rem;
     margin-bottom: 0.625rem;
     width: 100%;
   }
 
-  .test-input {
-    min-width: 5rem;
-    height: 3.75rem;
-  }
-
-  .workshop-details-basket-button {
+  .workshop-info-basket-button {
     height: 3.75rem;
     width: 100%;
 
@@ -263,7 +337,7 @@
     }
   }
 
-  .workshop-details-basket-subtotal {
+  .workshop-info-basket-subtotal {
     display: block;
     font-size: 0.9375;
     font-weight: 600;
@@ -271,10 +345,11 @@
     color: variables.$color-grey-text;
     margin-left: 5.71875rem;
   }
-}
 
-@media (min-width: variables.$breakpoint-details-sidebar) {
-  .workshop-details {
-    grid-area: workshop-details;
+  .similar-workshops__title {
+    font-size: 2.25rem;
+    line-height: 3rem;
+    margin-bottom: 2.5rem;
+    padding-left: 0;
   }
 }
