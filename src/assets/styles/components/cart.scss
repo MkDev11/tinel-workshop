@@ -1,0 +1,89 @@
+@use '../general/variables';
+
+.cart-icon-wrapper {
+  display: flex;
+  position: relative;
+
+  .nonempty-dot {
+    height: 0.8125rem;
+    width: 0.8125rem;
+    border-radius: 50%;
+    background-color: variables.$color-light-blue;
+    position: absolute;
+    top: 0;
+    right: -0.125rem;
+  }
+}
+
+.cart-icon {
+  height: 2rem;
+  width: 2rem;
+
+  path {
+    fill: variables.$color-black;
+  }
+}
+
+.header-cart {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &__text {
+    display: none;
+  }
+}
+
+.cart-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1.25rem;
+}
+
+.cart-drawer-header-overview {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+
+  &__text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4375rem;
+  }
+}
+
+.cart-drawer-header-close-icon {
+  height: 2rem;
+  width: 2rem;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  path {
+    fill: variables.$color-black;
+  }
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  .header-cart__text {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.1875rem;
+  }
+}
+
+@media (min-width: variables.$breakpoint-list-2-col) {
+  .cart-drawer-header-overview__text {
+    font-size: 1.4375rem;
+    line-height: 1.8125rem;
+  }
+}
