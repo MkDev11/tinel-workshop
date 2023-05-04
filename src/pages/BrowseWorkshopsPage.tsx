@@ -1,10 +1,6 @@
 import React from 'react'
-import {
-  BrowseWorkshopsListWrapper,
-  Navigation,
-  PageLayout,
-} from '../components'
-import { WorkshopCategory } from '../enums'
+import { BrowseWorkshopsListWrapper, Main, Navigation } from '../components'
+import { WorkshopCategory } from '../util'
 
 type Props = {
   category?: WorkshopCategory
@@ -12,9 +8,9 @@ type Props = {
 
 export function BrowseWorkshopsPage(props: Props) {
   return (
-    <PageLayout type="browse">
+    <Main type="browse">
       <Navigation activeCategory={props.category} />
       <BrowseWorkshopsListWrapper category={props.category} />
-    </PageLayout>
+    </Main>
   )
 }

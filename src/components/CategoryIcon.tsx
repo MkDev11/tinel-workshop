@@ -1,10 +1,10 @@
 import React, { cloneElement } from 'react'
-import { WorkshopCategory } from '../enums'
 import {
   BrushIcon as DesignIcon,
   FrontendIcon,
   BackendIcon,
   FlashIcon as MarketingIcon,
+  WorkshopCategory,
 } from '../util'
 
 const CATEGORY_ICON: { [category: string]: JSX.Element } = {

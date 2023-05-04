@@ -1,14 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { GoBack, PageLayout, WorkshopInfo } from '../components'
+import { GoBack, Main, WorkshopInfo } from '../components'
 
 export function WorkshopInfoPage() {
   const { id } = useParams()
 
   return (
-    <PageLayout type="info">
+    <Main type="info">
       <GoBack />
       <WorkshopInfo id={id} />
-    </PageLayout>
+    </Main>
   )
 }

@@ -149,6 +149,14 @@
   gap: 0.625rem;
 }
 
+.workshop-info-basket-quantity {
+  height: 2.8125rem;
+  width: 4rem;
+  padding-left: 1rem;
+  padding-right: 0.375rem;
+  font-size: 1.15625rem;
+}
+
 .workshop-info-basket-button {
   display: flex;
   align-items: center;
@@ -196,6 +204,10 @@
     &__currency {
       font-size: 0.84375rem;
     }
+  }
+
+  .workshop-info-basket-quantity {
+    width: 4.3125rem;
   }
 
   .workshop-info-basket-button {
@@ -326,6 +338,13 @@
     gap: 0.71875rem;
     margin-bottom: 0.625rem;
     width: 100%;
+  }
+
+  .workshop-info-basket-quantity {
+    height: 3.75rem;
+    width: 5rem;
+    padding-right: 0.625rem;
+    font-size: 1.4375rem;
   }
 
   .workshop-info-basket-button {

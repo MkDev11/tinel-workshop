@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button, Spinner, WorkshopList } from '.'
-import { WorkshopCategory } from '../enums'
 import { useWorkshops } from '../hooks'
-import { EmptyIcon } from '../util'
+import { EmptyIcon, WorkshopCategory } from '../util'
 
 type Props = {
   category?: WorkshopCategory

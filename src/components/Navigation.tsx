@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
-import { WorkshopCategory } from '../enums'
-import { ChevronDownIcon } from '../util'
+import { ChevronDownIcon, WorkshopCategory } from '../util'
 import { NavigationItem } from './NavigationItem'
 
 type Props = {
@@ -12,7 +11,7 @@ export function Navigation(props: Props) {
   const [mobileNavExpanded, setMobileNavExpanded] = useState(false)
 
   useEffect(() => {
-    const collapseMobileNav = (e: MouseEvent) => {
+    function collapseMobileNav(e: MouseEvent) {
       const activeCategory = document.querySelector('.active-category')
       if (activeCategory && !activeCategory.contains(e.target as Node)) {
         setMobileNavExpanded(false)

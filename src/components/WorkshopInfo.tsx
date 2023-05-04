@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import {
   CalendarIcon,
   CartIcon,
@@ -13,14 +13,25 @@ import { CategoryIcon } from './CategoryIcon'
 import { NumberInput } from './NumberInput'
 import { Spinner } from './Spinner'
 import { WorkshopList } from './WorkshopList'
+import { setWorkshopQuantity, useStoreDispatch } from '../store'
 
 type Props = {
   id?: string
 }
 
 export function WorkshopInfo(props: Props) {
+  const [quantity, setQuantity] = useState(1)
+
   const { workshop, similarWorkshops, loading } = useWorkshopInfo(props.id)
-  const [basketQuantity, setBasketQuantity] = useState(1)
+
+  const dispatch = useStoreDispatch()
+
+  const handleAddToCart = useCallback(() => {
+    if (workshop) {
+      dispatch(setWorkshopQuantity({ ...workshop, quantity }))
+      setQuantity(1)
+    }
+  }, [dispatch, quantity, workshop])
 
   if (!props.id || isNaN(Number(props.id))) {
     return <>NOT FOUND</> //TODO
@@ -86,10 +97,14 @@ export function WorkshopInfo(props: Props) {
             <div className="workshop-info-basket-actions">
               <NumberInput
                 className="workshop-info-basket-quantity"
-                value={basketQuantity}
-                onChange={setBasketQuantity}
+                value={quantity}
+                onChange={setQuantity}
               />
-              <Button variant="yellow" className="workshop-info-basket-button">
+              <Button
+                variant="yellow"
+                className="workshop-info-basket-button"
+                onClick={handleAddToCart}
+              >
                 <CartIcon className="workshop-info-basket-button__icon" />
                 <span className="workshop-info-basket-button__text">
                   Add to cart
@@ -98,8 +113,8 @@ export function WorkshopInfo(props: Props) {
             </div>
           </div>
           <div className="workshop-info-basket-subtotal">
-            Subtotal:{' '}
-            {PriceFormatter.DEFAULT.format(workshop.price * basketQuantity)} EUR
+            Subtotal: {PriceFormatter.DEFAULT.format(workshop.price * quantity)}{' '}
+            EUR
           </div>
         </div>
       </div>

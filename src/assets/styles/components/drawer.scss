@@ -7,7 +7,8 @@
   z-index: 3;
   height: 100%;
   width: 100vw;
-  padding: 0.875rem 1.3125rem;
+  display: flex;
+  flex-direction: column;
   background-color: variables.$color-white;
   box-shadow: variables.$box-shadow-drawer;
   visibility: hidden;
@@ -21,12 +22,19 @@
   }
 }
 
-@media (min-width: variables.$breakpoint-list-2-col) {
+body.drawer-open {
+  overflow-y: hidden;
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
   .drawer {
     left: auto;
     right: 0;
-    width: 23.75rem;
-    padding: 1.8125rem 1.25rem;
-    transform: translateX(23.75rem);
+    width: 25rem;
+    transform: translateX(25rem);
+  }
+
+  body.drawer-open {
+    overflow-y: auto;
   }
 }

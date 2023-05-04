@@ -1,14 +1,14 @@
 import { User } from './User'
 
 export type WorkshopShort = {
-  id: string
+  id: number
   title: string
   desc: string
   price: number
   category: string
   date: string
   imageUrl: string
-  userId: string
+  userId: number
 }
 
 export type WorkshopFull = WorkshopShort & {
