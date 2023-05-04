@@ -1,0 +1,68 @@
+@use '../general/variables';
+
+.select-container {
+  .select-container {
+    width: 100%;
+  }
+
+  .select-control {
+    outline: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid variables.$color-grey-text;
+    box-shadow: none;
+
+    &:hover {
+      border-color: variables.$color-blue;
+    }
+  }
+
+  .select-value-container {
+    font-size: 1.15625rem;
+    font-weight: 500;
+    line-height: 1.4375rem;
+    color: variables.$color-black;
+    padding-block: 0.875rem;
+    padding-left: 1.25rem;
+    padding-right: 0.75rem;
+  }
+
+  .select-indicator-separator {
+    display: none;
+  }
+
+  .select-dropdown-indicator {
+    path {
+      fill: variables.$color-black;
+    }
+  }
+
+  .select-menu {
+    overflow: hidden;
+  }
+
+  .select-menu-list {
+    padding: 0;
+  }
+
+  .select-option {
+    font-size: 1.15625rem;
+    font-weight: 500;
+    line-height: 1.4375rem;
+    padding: 0.875rem 1.25rem;
+
+    &.select-option--selected {
+      background-color: variables.$color-blue;
+    }
+  }
+}
+
+@media (min-width: variables.$breakpoint-modal) {
+  .select-container {
+    .select-value-container,
+    .select-option {
+      font-size: 1.125rem;
+      line-height: 1.6875rem;
+    }
+  }
+}

@@ -1,7 +1,56 @@
 @use '../general/variables';
 
+.labeled-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1875rem;
+  width: 100%;
+}
+
+.input-label {
+  font-size: 0.84375rem;
+  font-weight: 700;
+  line-height: 1.0625rem;
+  color: variables.$color-black;
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  .labeled-input {
+    gap: 0.3125rem;
+  }
+
+  .input-label {
+    font-size: 0.9375rem;
+    line-height: 1.1875rem;
+  }
+}
+
 .number-input {
   font-weight: 700;
   border: 1px solid variables.$color-blue;
   border-radius: 0.5625rem;
+}
+
+.text-input {
+  font-size: 1.15625rem;
+  font-weight: 500;
+  line-height: 1.4375rem;
+  color: variables.$color-black;
+  padding: 0.875rem 1.25rem;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid variables.$color-grey-text;
+
+  &:hover,
+  &:focus {
+    border-color: variables.$color-blue;
+  }
+}
+
+@media (min-width: variables.$breakpoint-modal) {
+  .text-input {
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
+  }
 }

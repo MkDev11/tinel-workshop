@@ -1,5 +1,13 @@
 @use '../general/variables';
 
+body.drawer-open {
+  overflow-y: hidden;
+
+  @media (min-width: variables.$breakpoint-sidebar) {
+    overflow-y: auto;
+  }
+}
+
 .drawer {
   position: fixed;
   left: 0;
@@ -22,19 +30,15 @@
   }
 }
 
-body.drawer-open {
-  overflow-y: hidden;
-}
-
 @media (min-width: variables.$breakpoint-sidebar) {
+  body.drawer-open {
+    overflow-y: auto;
+  }
+
   .drawer {
     left: auto;
     right: 0;
     width: 25rem;
     transform: translateX(25rem);
-  }
-
-  body.drawer-open {
-    overflow-y: auto;
   }
 }

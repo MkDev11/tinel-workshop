@@ -1,0 +1,74 @@
+@use '../general/variables';
+
+.checkbox-wrapper {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  cursor: pointer;
+  /* 
+  
+  font-size: 22px; */
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* hide the browser's default checkbox */
+.checkbox-wrapper__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  border: 0;
+}
+
+/* create a custom checkbox */
+.checkbox-wrapper__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2rem;
+  width: 2rem;
+  background-color: variables.$color-white;
+  border: 1px solid variables.$color-blue;
+  border-radius: 0.25rem;
+}
+
+/* when the checkbox is checked, add a primary background */
+.checkbox-wrapper__input:checked ~ .checkbox-wrapper__checkmark {
+  background-color: variables.$color-blue;
+}
+
+/* create the checkmark (hidden when not checked) */
+.checkbox-wrapper__checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* show the checkmark when checked */
+.checkbox-wrapper__input:checked ~ .checkbox-wrapper__checkmark:after {
+  display: block;
+}
+
+/* style the checkmark */
+.checkbox-wrapper__checkmark:after {
+  left: 0.625rem;
+  top: 0.25rem;
+  width: 0.375rem;
+  height: 0.75rem;
+  border: solid variables.$color-white;
+  border-width: 0 0.1875rem 0.1875rem 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkbox-wrapper__label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.1875rem;
+  margin-left: 2.625rem;
+}

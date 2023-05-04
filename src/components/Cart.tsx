@@ -19,13 +19,14 @@ import { Drawer } from './Drawer'
 import { NumberInput } from './NumberInput'
 import { Button } from './Button'
 import classNames from 'classnames'
+import { Modal } from './Modal'
+import { CheckoutModal } from './CheckoutModal'
 
 export function Cart() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-
-  const { didMount } = useDidMount()
-  const dispatch = useStoreDispatch()
-  const { products, total } = useStoreSelector((state) => state.cart)
+  const [isCheckoutModalVisible, setIsCheckoutModalVisible] = useState(false)
+  const [isCheckoutSuccessModalVisible, setIsCheckoutSuccessModalVisible] =
+    useState(false)
 
   function handleOpenDrawer() {
     setIsDrawerOpen(true)
@@ -36,6 +37,33 @@ export function Cart() {
     setIsDrawerOpen(false)
     document.body.classList.remove('drawer-open')
   }
+
+  function handleOpenCheckoutModal() {
+    handleCloseDrawer()
+    setIsCheckoutModalVisible(true)
+    document.body.classList.add('modal-open')
+  }
+
+  function handleCloseCheckoutModal() {
+    setIsCheckoutModalVisible(false)
+    document.body.classList.remove('modal-open')
+  }
+
+  function handleOpenCheckoutSuccessModal() {
+    handleCloseCheckoutModal()
+    setIsCheckoutSuccessModalVisible(true)
+    document.body.classList.add('modal-open')
+  }
+
+  function handleCloseCheckoutSuccessModal() {
+    setIsCheckoutSuccessModalVisible(false)
+    document.body.classList.remove('modal-open')
+    // TODO: redirect to home
+  }
+
+  const { didMount } = useDidMount()
+  const dispatch = useStoreDispatch()
+  const { products, total } = useStoreSelector((state) => state.cart)
 
   function handleChangeWorkshopQuantity(
     workshop: WorkshopShort,
@@ -152,13 +180,22 @@ export function Cart() {
                   </span>
                 </span>
               </div>
-              <Button variant="blue" className="cart-drawer-checkout-button">
+              <Button
+                variant="blue"
+                className="cart-drawer-checkout-button"
+                onClick={handleOpenCheckoutModal}
+              >
                 Checkout
               </Button>
             </div>
           </div>
         )}
       </Drawer>
+      <CheckoutModal
+        isModalOpen={isCheckoutModalVisible}
+        onCloseModal={handleCloseCheckoutModal}
+        onCheckout={handleOpenCheckoutSuccessModal} //TODO: should be handleCheckout
+      />
     </>
   )
 }
