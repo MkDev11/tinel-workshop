@@ -1,32 +1,36 @@
 import en from 'date-fns/locale/en-GB'
 import React from 'react'
 import DatePicker from 'react-datepicker'
+import { Controller, FieldValues } from 'react-hook-form'
 import 'react-datepicker/dist/react-datepicker.css'
-import { CalendarIcon } from '../util'
+import { CalendarIcon, FormInputProps } from '../util'
 
-type Props = {
-  id: string
-  value?: Date
+type Props<T extends FieldValues> = {
   placeholder: string
   maxDate?: Date
-  onChangeValue: (value: Date) => void
-}
+} & FormInputProps<T>
 
-export function DateInput(props: Props) {
+export function DateInput<T extends FieldValues>(props: Props<T>) {
   return (
     <div className="date-input-wrapper">
       <CalendarIcon className="date-input-calendar-icon" />
-      <DatePicker
-        className="date-input"
-        id={props.id}
-        selected={props.value}
-        maxDate={props.maxDate}
-        placeholderText={props.placeholder}
-        showMonthDropdown
-        showYearDropdown
-        dropdownMode="select"
-        locale={en}
-        onChange={props.onChangeValue}
+      <Controller
+        control={props.control}
+        name={props.name}
+        render={({ field }) => (
+          <DatePicker
+            selected={field.value}
+            onChange={field.onChange}
+            className="date-input"
+            id={props.name}
+            maxDate={props.maxDate}
+            placeholderText={props.placeholder}
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+            locale={en}
+          />
+        )}
       />
     </div>
   )

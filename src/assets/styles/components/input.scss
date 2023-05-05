@@ -14,6 +14,13 @@
   color: variables.$color-black;
 }
 
+.input-error {
+  font-weight: 500;
+  color: variables.$color-red;
+  margin-top: 0.5rem;
+  text-align: end;
+}
+
 @media (min-width: variables.$breakpoint-sidebar) {
   .labeled-input {
     gap: 0.3125rem;
@@ -46,11 +53,20 @@
   &:focus {
     border-color: variables.$color-blue;
   }
+
+  /* override chrome autofill styles */
+  &:autofill {
+    box-shadow: 0 0 0 3.3125rem variables.$color-grey-background-light inset;
+  }
 }
 
 @media (min-width: variables.$breakpoint-modal) {
   .text-input {
     font-size: 1.125rem;
     line-height: 1.6875rem;
+
+    &:autofill {
+      box-shadow: 0 0 0 3.5625rem variables.$color-grey-background-light inset;
+    }
   }
 }

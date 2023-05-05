@@ -1,19 +1,22 @@
-import classNames from 'classnames'
 import React from 'react'
+import { ValidatedInput } from './ValidatedInput'
 
 type Props = {
   label: string
-  inputId: string
+  htmlFor: string
+  error?: string
   children: React.ReactNode
 }
 
 export function LabeledInput(props: Props) {
   return (
     <div className="labeled-input">
-      <label className="input-label" htmlFor={props.inputId}>
-        {props.label}
-      </label>
-      {props.children}
+      <ValidatedInput error={props.error}>
+        <label className="input-label" htmlFor={props.htmlFor}>
+          {props.label}
+        </label>
+        {props.children}
+      </ValidatedInput>
     </div>
   )
 }

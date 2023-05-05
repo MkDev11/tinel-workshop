@@ -1,24 +1,19 @@
-import classNames from 'classnames'
 import React from 'react'
+import { FieldValues } from 'react-hook-form'
+import { FormInputProps } from '../util'
 
-type Props = {
-  id: string
-  value: string
+type Props<T extends FieldValues> = {
   placeholder: string
-  type?: string
-  onChangeValue: (value: string) => void
-}
+} & FormInputProps<T>
 
-export function TextInput(props: Props) {
+export function TextInput<T extends FieldValues>(props: Props<T>) {
   return (
     <input
+      name={props.name}
+      {...props.register?.(props.name, props.rules)}
       className="text-input"
-      id={props.id}
-      name={props.id}
-      value={props.value}
+      id={props.name}
       placeholder={props.placeholder}
-      type={props.type || 'text'}
-      onChange={(e) => props.onChangeValue(e.target.value)}
     />
   )
 }

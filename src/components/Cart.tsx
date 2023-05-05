@@ -1,25 +1,15 @@
+import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { WorkshopShort } from '../api'
+import { useDidMount } from '../hooks'
 import {
   removeWorkshop,
   setWorkshopQuantity,
   useStoreDispatch,
   useStoreSelector,
 } from '../store'
-import { useDidMount } from '../hooks'
-import {
-  CloseIcon,
-  DEFAULT_IMAGE_URL,
-  EmptyIcon,
-  PriceFormatter,
-  TrashIcon,
-} from '../util'
+import { CartDrawer } from './CartDrawer'
 import { CartIconWrapper } from './CartIconWrapper'
-import { Drawer } from './Drawer'
-import { NumberInput } from './NumberInput'
-import { Button } from './Button'
-import classNames from 'classnames'
-import { Modal } from './Modal'
 import { CheckoutModal } from './CheckoutModal'
 
 export function Cart() {
@@ -101,96 +91,16 @@ export function Cart() {
             : `${cartCount} Workshops in Cart`}
         </span>
       </div>
-      <Drawer isOpen={isDrawerOpen}>
-        <div className="cart-drawer-header">
-          <div className="cart-drawer-header-overview">
-            <CartIconWrapper cartCount={cartCount} />
-            <span className="cart-drawer-header-overview__text">
-              {cartCount === 0
-                ? 'Empty Cart'
-                : cartCount === 1
-                ? '1 Workshop'
-                : `${cartCount} Workshops`}
-            </span>
-          </div>
-          <CloseIcon
-            className="cart-drawer-header-close-icon"
-            onClick={handleCloseDrawer}
-          />
-        </div>
-        {cartCount === 0 ? (
-          <EmptyIcon className="cart-drawer-empty-icon" />
-        ) : (
-          <div className="cart-drawer-body">
-            <ul className="cart-drawer-list">
-              {products.map((workshop) => (
-                <li
-                  className="cart-workshop-card"
-                  title={workshop.title}
-                  key={workshop.id}
-                >
-                  <img
-                    src={workshop.imageUrl || DEFAULT_IMAGE_URL}
-                    alt={workshop.title}
-                    loading="lazy"
-                    className="cart-workshop-card__image"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement
-                      target.src = DEFAULT_IMAGE_URL
-                    }}
-                  />
-                  <div className="cart-workshop-card__text-content">
-                    <div className="cart-workshop-card-title truncate">
-                      {workshop.title}
-                    </div>
-                    <TrashIcon
-                      className="cart-workshop-card-delete-icon"
-                      onClick={() => handleRemoveWorkshop(workshop.id)}
-                    />
-                    <div className="cart-workshop-card-action-row">
-                      <NumberInput
-                        className="cart-workshop-card-quantity"
-                        value={workshop.quantity}
-                        onChange={(quantity) =>
-                          handleChangeWorkshopQuantity(workshop, quantity)
-                        }
-                      />
-                      <div className="cart-workshop-card-price">
-                        <span className="cart-workshop-card-price__amount">
-                          {PriceFormatter.DEFAULT.format(workshop.price)}
-                        </span>
-                        <span className="cart-workshop-card-price__currency">
-                          EUR
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="cart-drawer-footer">
-              <div className="cart-drawer-subtotal">
-                <span className="cart-drawer-subtotal__text">Subtotal</span>
-                <span className="cart-drawer-subtotal__price">
-                  <span className="cart-drawer-subtotal-price__amount">
-                    {PriceFormatter.DEFAULT.format(total)}
-                  </span>
-                  <span className="cart-drawer-subtotal-price__currency">
-                    EUR
-                  </span>
-                </span>
-              </div>
-              <Button
-                variant="blue"
-                className="cart-drawer-checkout-button"
-                onClick={handleOpenCheckoutModal}
-              >
-                Checkout
-              </Button>
-            </div>
-          </div>
-        )}
-      </Drawer>
+      <CartDrawer
+        isDrawerOpen={isDrawerOpen}
+        cartCount={cartCount}
+        products={products}
+        total={total}
+        onCloseDrawer={handleCloseDrawer}
+        onChangeWorkshopQuantity={handleChangeWorkshopQuantity}
+        onRemoveWorkshop={handleRemoveWorkshop}
+        onOpenCheckoutModal={handleOpenCheckoutModal}
+      />
       <CheckoutModal
         isModalOpen={isCheckoutModalVisible}
         onCloseModal={handleCloseCheckoutModal}
