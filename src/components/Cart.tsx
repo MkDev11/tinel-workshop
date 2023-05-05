@@ -1,8 +1,10 @@
 import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { WorkshopShort } from '../api'
-import { useDidMount } from '../hooks'
+import { useDidMount, useCheckout } from '../hooks'
 import {
+  clearCart,
   removeWorkshop,
   setWorkshopQuantity,
   useStoreDispatch,
@@ -10,13 +12,12 @@ import {
 } from '../store'
 import { CartDrawer } from './CartDrawer'
 import { CartIconWrapper } from './CartIconWrapper'
-import { CheckoutModal } from './CheckoutModal'
+import { CheckoutFormModal } from './CheckoutFormModal'
+import { CheckoutOutcomeModal } from './CheckoutOutcomeModal'
 
 export function Cart() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isCheckoutModalVisible, setIsCheckoutModalVisible] = useState(false)
-  const [isCheckoutSuccessModalVisible, setIsCheckoutSuccessModalVisible] =
-    useState(false)
 
   function handleOpenDrawer() {
     setIsDrawerOpen(true)
@@ -39,18 +40,6 @@ export function Cart() {
     document.body.classList.remove('modal-open')
   }
 
-  function handleOpenCheckoutSuccessModal() {
-    handleCloseCheckoutModal()
-    setIsCheckoutSuccessModalVisible(true)
-    document.body.classList.add('modal-open')
-  }
-
-  function handleCloseCheckoutSuccessModal() {
-    setIsCheckoutSuccessModalVisible(false)
-    document.body.classList.remove('modal-open')
-    // TODO: redirect to home
-  }
-
   const { didMount } = useDidMount()
   const dispatch = useStoreDispatch()
   const { products, total } = useStoreSelector((state) => state.cart)
@@ -62,38 +51,65 @@ export function Cart() {
     dispatch(setWorkshopQuantity({ ...workshop, quantity }))
   }
 
+  function handleClearCart() {
+    dispatch(clearCart())
+  }
+
   function handleRemoveWorkshop(workshopId: number) {
     dispatch(removeWorkshop(workshopId))
   }
 
+  const { loading, submitOrder } = useCheckout()
+  const [checkoutOutcomeModalInfo, setCheckoutOutcomeModalInfo] = useState<{
+    success: boolean
+    visible: boolean
+  } | null>(null)
+  const navigate = useNavigate()
+
+  async function handleCheckout() {
+    const success = await submitOrder(products, total)
+    if (success) {
+      handleClearCart()
+    }
+    handleCloseCheckoutModal()
+    setCheckoutOutcomeModalInfo({
+      success,
+      visible: true,
+    })
+    document.body.classList.add('modal-open')
+  }
+
+  function handleBackToShop() {
+    setCheckoutOutcomeModalInfo(null)
+    document.body.classList.remove('modal-open')
+    navigate('/')
+  }
+
   useEffect(() => {
-    if (didMount) {
+    if (didMount && total > 0) {
       handleOpenDrawer()
     }
   }, [total, didMount])
-
-  const cartCount = products.length
 
   return (
     <>
       <div
         className={classNames('header-cart', {
-          'header-cart--nonempty': cartCount > 0,
+          'header-cart--nonempty': products.length > 0,
         })}
-        onClick={cartCount === 0 ? undefined : handleOpenDrawer}
+        onClick={products.length === 0 ? undefined : handleOpenDrawer}
       >
-        <CartIconWrapper cartCount={cartCount} />
+        <CartIconWrapper cartCount={products.length} />
         <span className="header-cart__text">
-          {cartCount === 0
+          {products.length === 0
             ? 'Cart is Empty'
-            : cartCount === 1
+            : products.length === 1
             ? '1 Workshop in Cart'
-            : `${cartCount} Workshops in Cart`}
+            : `${products.length} Workshops in Cart`}
         </span>
       </div>
       <CartDrawer
         isDrawerOpen={isDrawerOpen}
-        cartCount={cartCount}
         products={products}
         total={total}
         onCloseDrawer={handleCloseDrawer}
@@ -101,11 +117,19 @@ export function Cart() {
         onRemoveWorkshop={handleRemoveWorkshop}
         onOpenCheckoutModal={handleOpenCheckoutModal}
       />
-      <CheckoutModal
+      <CheckoutFormModal
         isModalOpen={isCheckoutModalVisible}
+        loading={loading}
         onCloseModal={handleCloseCheckoutModal}
-        onCheckout={handleOpenCheckoutSuccessModal} //TODO: should be handleCheckout
+        onCheckout={handleCheckout}
       />
+      {checkoutOutcomeModalInfo && (
+        <CheckoutOutcomeModal
+          isModalOpen={checkoutOutcomeModalInfo.visible}
+          title={checkoutOutcomeModalInfo.success ? 'Thank you!' : 'Oops!'}
+          onBackToShop={handleBackToShop}
+        />
+      )}
     </>
   )
 }

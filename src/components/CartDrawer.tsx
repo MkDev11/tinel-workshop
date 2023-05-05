@@ -1,5 +1,5 @@
 import React from 'react'
-import { WorkshopShort } from '../api'
+import { WorkshopOrder, WorkshopShort } from '../api'
 import {
   CloseIcon,
   DEFAULT_IMAGE_URL,
@@ -16,8 +16,7 @@ type WorkshopInCart = WorkshopShort & { quantity: number }
 
 type Props = {
   isDrawerOpen: boolean
-  cartCount: number
-  products: WorkshopInCart[]
+  products: WorkshopOrder[]
   total: number
   onCloseDrawer: () => void
   onChangeWorkshopQuantity: (workshop: WorkshopInCart, quantity: number) => void
@@ -26,17 +25,19 @@ type Props = {
 }
 
 export function CartDrawer(props: Props) {
+  const cartCount = props.products.length
+
   return (
     <Drawer isOpen={props.isDrawerOpen}>
       <div className="cart-drawer-header">
         <div className="cart-drawer-header-overview">
-          <CartIconWrapper cartCount={props.cartCount} />
+          <CartIconWrapper cartCount={cartCount} />
           <span className="cart-drawer-header-overview__text">
-            {props.cartCount === 0
+            {cartCount === 0
               ? 'Empty Cart'
-              : props.cartCount === 1
+              : cartCount === 1
               ? '1 Workshop'
-              : `${props.cartCount} Workshops`}
+              : `${cartCount} Workshops`}
           </span>
         </div>
         <CloseIcon
@@ -44,7 +45,7 @@ export function CartDrawer(props: Props) {
           onClick={props.onCloseDrawer}
         />
       </div>
-      {props.cartCount === 0 ? (
+      {cartCount === 0 ? (
         <EmptyIcon className="cart-drawer-empty-icon" />
       ) : (
         <div className="cart-drawer-body">

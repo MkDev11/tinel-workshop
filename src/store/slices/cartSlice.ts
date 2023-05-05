@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { WorkshopShort } from '../../api'
+import { WorkshopOrder, WorkshopShort } from '../../api'
 
 interface CartState {
-  products: (WorkshopShort & { quantity: number })[]
+  products: WorkshopOrder[]
   total: number
 }
 
@@ -28,20 +28,7 @@ export const cartSlice = createSlice({
         state.products.push({ ...action.payload, quantity: 1 })
       }
     },
-    setWorkshopQuantity: (
-      state,
-      action: PayloadAction<WorkshopShort & { quantity: number }>
-    ) => {
-      const { id, quantity } = action.payload
-      const product = state.products.find((product) => product.id === id)
-      if (product) {
-        state.total += (quantity - product.quantity) * product.price
-        product.quantity += quantity
-      } else {
-        state.total += quantity * action.payload.price
-        state.products.push(action.payload)
-      }
-    },
+    clearCart: () => initialState,
     removeWorkshop: (state, action: PayloadAction<number>) => {
       const product = state.products.find(
         (product) => product.id === action.payload
@@ -53,9 +40,23 @@ export const cartSlice = createSlice({
         )
       }
     },
+    setWorkshopQuantity: (
+      state,
+      action: PayloadAction<WorkshopShort & { quantity: number }>
+    ) => {
+      const { id, quantity } = action.payload
+      const product = state.products.find((product) => product.id === id)
+      if (product) {
+        state.total += (quantity - product.quantity) * product.price
+        product.quantity = quantity
+      } else {
+        state.total += quantity * action.payload.price
+        state.products.push(action.payload)
+      }
+    },
   },
 })
 
-export const { addWorkshop, setWorkshopQuantity, removeWorkshop } =
+export const { addWorkshop, clearCart, removeWorkshop, setWorkshopQuantity } =
   cartSlice.actions
 export const cartReducer = cartSlice.reducer

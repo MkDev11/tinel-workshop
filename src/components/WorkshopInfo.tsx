@@ -28,7 +28,8 @@ export function WorkshopInfo(props: Props) {
 
   const handleAddToCart = useCallback(() => {
     if (workshop) {
-      dispatch(setWorkshopQuantity({ ...workshop, quantity }))
+      const { user, ...workshopShort } = workshop
+      dispatch(setWorkshopQuantity({ ...workshopShort, quantity }))
       setQuantity(1)
     }
   }, [dispatch, quantity, workshop])

@@ -27,6 +27,7 @@ export function DateInput<T extends FieldValues>(props: Props<T>) {
             placeholderText={props.placeholder}
             showMonthDropdown
             showYearDropdown
+            showPopperArrow={false}
             dropdownMode="select"
             locale={en}
           />

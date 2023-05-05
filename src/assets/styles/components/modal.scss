@@ -27,6 +27,8 @@ body.modal-open {
   padding: 2.5rem;
   background-color: variables.$color-white;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: variables.$breakpoint-modal) {

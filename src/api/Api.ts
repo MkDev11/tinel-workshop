@@ -1,15 +1,20 @@
 import { API_WORKSHOPS_LIMIT, API_URL } from './constants'
-import { PaginatedWorkshopList, WorkshopFull, WorkshopShort } from './types'
+import {
+  PaginatedWorkshopList,
+  WorkshopFull,
+  WorkshopOrder,
+  WorkshopShort,
+} from './types'
 
-export class WorkshopApi {
-  private static instance: WorkshopApi
+export class Api {
+  private static instance: Api
 
-  public static getInstance(): WorkshopApi {
-    if (!WorkshopApi.instance) {
-      WorkshopApi.instance = new WorkshopApi()
+  public static getInstance(): Api {
+    if (!Api.instance) {
+      Api.instance = new Api()
     }
 
-    return WorkshopApi.instance
+    return Api.instance
   }
 
   public async getSimilarWorkshops(
@@ -61,5 +66,29 @@ export class WorkshopApi {
           ? page + 1
           : undefined,
     }
+  }
+
+  public async postOrder(
+    products: WorkshopOrder[],
+    total: number,
+    userId: number
+  ): Promise<void> {
+    const response = await fetch(`${API_URL}/orders2`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        products,
+        total,
+        userId,
+      }),
+    })
+
+    if (!response.ok) {
+      throw new Error('Invalid request')
+    }
+
+    console.log(await response.json())
   }
 }

@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
-import { WorkshopApi, WorkshopFull, WorkshopShort } from '../api'
+import { Api, WorkshopFull, WorkshopShort } from '../api'
 import { handleError, minDuration } from '../util'
 import { useQuery } from '@tanstack/react-query'
 
-const workshopApi = WorkshopApi.getInstance()
+const api = Api.getInstance()
 
 export function useWorkshopInfo(workshopId?: string) {
   const getWorkshopInfo = async () => {
@@ -13,11 +13,11 @@ export function useWorkshopInfo(workshopId?: string) {
 
     try {
       const workshop = await minDuration(
-        workshopApi.getWorkshopDetails(Number(workshopId)),
+        api.getWorkshopDetails(Number(workshopId)),
         500
       )
       const similarWorkshops = await minDuration(
-        workshopApi.getSimilarWorkshops(workshop.category, Number(workshopId)),
+        api.getSimilarWorkshops(workshop.category, Number(workshopId)),
         500
       )
       return { workshop, similarWorkshops }

@@ -23,11 +23,12 @@ type CheckoutFormFields = {
 
 type Props = {
   isModalOpen: boolean
+  loading: boolean
   onCloseModal: () => void
-  onCheckout: () => void
+  onCheckout: () => Promise<void>
 }
 
-export function CheckoutModal(props: Props) {
+export function CheckoutFormModal(props: Props) {
   const {
     control,
     register,
@@ -36,8 +37,9 @@ export function CheckoutModal(props: Props) {
     formState: { errors },
   } = useForm<CheckoutFormFields>()
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     console.log(data)
+    await props.onCheckout()
     reset()
   })
 
@@ -168,7 +170,9 @@ export function CheckoutModal(props: Props) {
         </ValidatedInput>
         <Button
           variant="yellow"
-          className="checkout-modal-form-submit"
+          className="checkout-modal-button"
+          loading={props.loading}
+          disabled={props.loading}
           submit={true}
         >
           Checkout

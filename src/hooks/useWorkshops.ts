@@ -1,20 +1,14 @@
 import { useMemo } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import {
-  EMPTY_PAGINATED_WORKSHOP_LIST,
-  WorkshopApi,
-  WorkshopShort,
-} from '../api'
+import { EMPTY_PAGINATED_WORKSHOP_LIST, Api, WorkshopShort } from '../api'
 import { handleError, minDuration } from '../util'
 
-const workshopApi = WorkshopApi.getInstance()
+const api = Api.getInstance()
 
 export function useWorkshops(category?: string) {
   const getWorkshopList = async ({ pageParam = 1 }) => {
     try {
-      const list = await minDuration(
-        workshopApi.getWorkshopList(pageParam, category)
-      )
+      const list = await minDuration(api.getWorkshopList(pageParam, category))
       return list
     } catch (e) {
       handleError(e)
