@@ -1,4 +1,4 @@
-Web shop developed following a Figma design. It was built in React with TypeScript, Redux and Sass.
+Mock web shop developed following a Figma design. It was built in React with TypeScript, Redux, React Hook Form and Sass.
 
 ##### Test locally
 
