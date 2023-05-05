@@ -88,7 +88,5 @@ export class Api {
     if (!response.ok) {
       throw new Error('Invalid request')
     }
-
-    console.log(await response.json())
   }
 }

@@ -16,7 +16,8 @@ export function NumberInput(props: Props) {
       value={props.value}
       onChange={(e) => {
         const parsed = parseInt(e.target.value)
-        props.onChange(isNaN(parsed) || parsed === 0 ? 1 : parsed)
+        e.target.value = parsed.toString()
+        props.onChange(isNaN(parsed) || parsed === 0 ? 0 : parsed)
       }}
     />
   )

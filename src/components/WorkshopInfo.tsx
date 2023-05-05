@@ -105,6 +105,7 @@ export function WorkshopInfo(props: Props) {
               <Button
                 variant="yellow"
                 className="workshop-info-basket-button"
+                disabled={quantity === 0}
                 onClick={handleAddToCart}
               >
                 <CartIcon className="workshop-info-basket-button__icon" />

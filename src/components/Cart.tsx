@@ -66,7 +66,10 @@ export function Cart() {
   } | null>(null)
 
   async function handleCheckout() {
-    const success = await submitOrder(products, total)
+    const success = await submitOrder(
+      products.filter((workshop) => workshop.quantity > 0),
+      total
+    )
     if (success) {
       handleClearCart()
     }
@@ -79,10 +82,11 @@ export function Cart() {
   }
 
   function handleBackToShop(success: boolean) {
-    setCheckoutOutcomeModalInfo(null)
-    document.body.classList.remove('modal-open')
     if (success) {
       window.location.href = '/'
+    } else {
+      setCheckoutOutcomeModalInfo(null)
+      document.body.classList.remove('modal-open')
     }
   }
 

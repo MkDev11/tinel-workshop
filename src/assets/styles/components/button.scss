@@ -15,7 +15,7 @@
     color: variables.$color-black;
     background-color: variables.$color-yellow;
 
-    &:hover {
+    &:not(.disabled):hover {
       background-color: variables.$color-light-yellow;
     }
   }
@@ -24,7 +24,7 @@
     color: variables.$color-white;
     background-color: variables.$color-blue;
 
-    &:hover {
+    &:not(.disabled):hover {
       background-color: variables.$color-blue-hover;
     }
   }
@@ -38,7 +38,7 @@
     text-underline-offset: 0.4375rem;
     text-decoration-color: variables.$color-blue;
 
-    &:hover {
+    &:not(.disabled):hover {
       opacity: 0.8;
     }
   }

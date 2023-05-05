@@ -37,7 +37,6 @@ export function CheckoutFormModal(props: Props) {
   } = useForm<CheckoutFormFields>()
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data)
     await props.onCheckout()
     reset()
   })

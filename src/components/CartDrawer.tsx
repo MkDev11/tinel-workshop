@@ -90,9 +90,9 @@ export function CartDrawer(props: Props) {
                     <NumberInput
                       className="cart-workshop-card-quantity"
                       value={workshop.quantity}
-                      onChange={(quantity) =>
+                      onChange={(quantity) => {
                         props.onChangeWorkshopQuantity(workshop, quantity)
-                      }
+                      }}
                     />
                     <div className="cart-workshop-card-price">
                       <span className="cart-workshop-card-price__amount">
@@ -122,6 +122,7 @@ export function CartDrawer(props: Props) {
             <Button
               variant="blue"
               className="cart-drawer-checkout-button"
+              disabled={props.total === 0}
               onClick={props.onOpenCheckoutModal}
             >
               Checkout
