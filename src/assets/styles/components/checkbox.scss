@@ -41,6 +41,10 @@
   background-color: variables.$color-blue;
 }
 
+.checkbox-wrapper__input:focus-visible ~ .checkbox-wrapper__checkmark {
+  outline: 0.125rem solid variables.$color-black;
+}
+
 /* create the checkmark (hidden when not checked) */
 .checkbox-wrapper__checkmark:after {
   content: '';

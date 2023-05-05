@@ -12,7 +12,8 @@
     border-bottom: 2px solid variables.$color-grey-text;
     box-shadow: none;
 
-    &:hover {
+    &:hover,
+    &.select-control--focused {
       border-color: variables.$color-blue;
     }
   }

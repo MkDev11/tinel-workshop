@@ -31,7 +31,9 @@ export function Select<T extends FieldValues>(props: Props<T>) {
           menuShouldScrollIntoView={false}
           classNames={{
             container: () => 'select-container',
-            control: () => 'select-control',
+            control: (state) =>
+              'select-control' +
+              (state.isFocused ? ' select-control--focused' : ''),
             valueContainer: () => 'select-value-container',
             indicatorSeparator: () => 'select-indicator-separator',
             dropdownIndicator: () => 'select-dropdown-indicator',

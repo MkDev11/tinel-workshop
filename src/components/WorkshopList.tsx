@@ -10,6 +10,7 @@ import {
   DateFormatter,
   PriceFormatter,
   TimeFormatter,
+  handleKeyboardEvent,
 } from '../util'
 import { Button } from './Button'
 import { CategoryIcon } from './CategoryIcon'
@@ -40,9 +41,11 @@ export function WorkshopList(props: Props) {
             loading="lazy"
             className="workshop-card__image tab-focus"
             tabIndex={0}
-            onClick={(e) => {
-              e.stopPropagation()
+            onClick={() => {
               handleVisitWorkshopPage(workshop)
+            }}
+            onKeyDown={(e) => {
+              handleKeyboardEvent(e, () => handleVisitWorkshopPage(workshop))
             }}
             onError={(e) => {
               const target = e.target as HTMLImageElement
@@ -67,9 +70,11 @@ export function WorkshopList(props: Props) {
             <div
               className="workshop-card-title truncate tab-focus"
               tabIndex={0}
-              onClick={(e) => {
-                e.stopPropagation()
+              onClick={() => {
                 handleVisitWorkshopPage(workshop)
+              }}
+              onKeyDown={(e) => {
+                handleKeyboardEvent(e, () => handleVisitWorkshopPage(workshop))
               }}
             >
               {workshop.title}

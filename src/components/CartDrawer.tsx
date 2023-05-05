@@ -6,6 +6,7 @@ import {
   EmptyIcon,
   PriceFormatter,
   TrashIcon,
+  handleKeyboardEvent,
 } from '../util'
 import { Button } from './Button'
 import { CartIconWrapper } from './CartIconWrapper'
@@ -41,8 +42,12 @@ export function CartDrawer(props: Props) {
           </span>
         </div>
         <CloseIcon
-          className="cart-drawer-header-close-icon"
+          className="cart-drawer-header-close-icon tab-focus"
+          tabIndex={0}
           onClick={props.onCloseDrawer}
+          onKeyDown={(e) => {
+            handleKeyboardEvent(e, props.onCloseDrawer)
+          }}
         />
       </div>
       {cartCount === 0 ? (
@@ -71,8 +76,15 @@ export function CartDrawer(props: Props) {
                     {workshop.title}
                   </div>
                   <TrashIcon
-                    className="cart-workshop-card-delete-icon"
+                    className="cart-workshop-card-delete-icon tab-focus"
+                    id="close-drawer"
+                    tabIndex={0}
                     onClick={() => props.onRemoveWorkshop(workshop.id)}
+                    onKeyDown={(e) => {
+                      handleKeyboardEvent(e, () =>
+                        props.onRemoveWorkshop(workshop.id)
+                      )
+                    }}
                   />
                   <div className="cart-workshop-card-quantity-and-price">
                     <NumberInput

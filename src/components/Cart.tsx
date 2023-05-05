@@ -13,6 +13,7 @@ import { CartDrawer } from './CartDrawer'
 import { CartIconWrapper } from './CartIconWrapper'
 import { CheckoutFormModal } from './CheckoutFormModal'
 import { CheckoutOutcomeModal } from './CheckoutOutcomeModal'
+import { handleKeyboardEvent } from '../util'
 
 export function Cart() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -94,10 +95,16 @@ export function Cart() {
   return (
     <>
       <div
-        className={classNames('header-cart', {
+        className={classNames('header-cart tab-focus', {
           'header-cart--nonempty': products.length > 0,
         })}
+        tabIndex={products.length > 0 ? 0 : -1}
         onClick={products.length === 0 ? undefined : handleOpenDrawer}
+        onKeyDown={(e) => {
+          if (products.length > 0) {
+            handleKeyboardEvent(e, handleOpenDrawer)
+          }
+        }}
       >
         <CartIconWrapper cartCount={products.length} />
         <span className="header-cart__text">
