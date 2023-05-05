@@ -74,7 +74,7 @@ export function WorkshopList(props: Props) {
             >
               {workshop.title}
             </div>
-            <div className="workshop-card-action-row">
+            <div className="workshop-card-price-and-button">
               <div className="workshop-card-price">
                 <span className="workshop-card-price__amount">
                   {PriceFormatter.DEFAULT.format(workshop.price)}

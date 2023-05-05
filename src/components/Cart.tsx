@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { WorkshopShort } from '../api'
 import { useDidMount, useCheckout } from '../hooks'
 import {
@@ -64,7 +63,6 @@ export function Cart() {
     success: boolean
     visible: boolean
   } | null>(null)
-  const navigate = useNavigate()
 
   async function handleCheckout() {
     const success = await submitOrder(products, total)
@@ -79,10 +77,12 @@ export function Cart() {
     document.body.classList.add('modal-open')
   }
 
-  function handleBackToShop() {
+  function handleBackToShop(success: boolean) {
     setCheckoutOutcomeModalInfo(null)
     document.body.classList.remove('modal-open')
-    navigate('/')
+    if (success) {
+      window.location.href = '/'
+    }
   }
 
   useEffect(() => {
@@ -127,7 +127,9 @@ export function Cart() {
         <CheckoutOutcomeModal
           isModalOpen={checkoutOutcomeModalInfo.visible}
           title={checkoutOutcomeModalInfo.success ? 'Thank you!' : 'Oops!'}
-          onBackToShop={handleBackToShop}
+          onBackToShop={() =>
+            handleBackToShop(checkoutOutcomeModalInfo.success)
+          }
         />
       )}
     </>

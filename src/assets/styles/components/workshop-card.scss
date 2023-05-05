@@ -72,7 +72,7 @@
   }
 }
 
-.workshop-card-action-row {
+.workshop-card-price-and-button {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -184,7 +184,7 @@
     height: 4.25rem;
   }
 
-  .workshop-card-action-row {
+  .workshop-card-price-and-button {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;

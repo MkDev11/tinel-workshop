@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import {
   CalendarIcon,
   CartIcon,
@@ -35,7 +36,7 @@ export function WorkshopInfo(props: Props) {
   }, [dispatch, quantity, workshop])
 
   if (!props.id || isNaN(Number(props.id))) {
-    return <>NOT FOUND</> //TODO
+    return <Navigate to="/not-found" />
   }
 
   if (loading) {
@@ -78,12 +79,12 @@ export function WorkshopInfo(props: Props) {
             </div>
           </div>
           <h1 className="workshop-info-title">{workshop.title}</h1>
-          <h5 className="workshop-info-author">
+          <div className="workshop-info-author">
             <span className="workshop-info-author__with">With</span>
             <span className="workshop-info-author__name">
               {workshop.user.name}
             </span>
-          </h5>
+          </div>
           <p className="workshop-info-description">{workshop.desc}</p>
         </div>
         <div className="workshop-info-basket">

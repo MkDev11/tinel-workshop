@@ -1,0 +1,53 @@
+@use '../general/variables';
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-block: 2rem;
+  padding-bottom: 1.5625rem;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+  }
+
+  &__icon {
+    height: 8rem;
+    width: 8rem;
+  }
+
+  &__button {
+    font-size: 0.90625rem;
+    font-weight: 700;
+    line-height: 1.125rem;
+    height: 3.125rem;
+    padding-inline: 1rem;
+  }
+}
+
+@media (min-width: variables.$breakpoint-sidebar) {
+  .not-found {
+    gap: 4rem;
+    margin-block: 4rem;
+    padding-bottom: 3.75rem;
+
+    &__title {
+      font-size: 2.5rem;
+      line-height: 3.125rem;
+    }
+
+    &__icon {
+      height: 10rem;
+      width: 10rem;
+    }
+
+    &__button {
+      font-size: 1.125rem;
+      height: 3.75rem;
+      padding-inline: 2rem;
+    }
+  }
+}

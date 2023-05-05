@@ -1,0 +1,31 @@
+@use '../general/variables';
+
+.checkout-modal-form,
+.checkout-modal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+}
+
+.checkout-modal-button {
+  font-size: 1.15625rem;
+  font-weight: 700;
+  line-height: 1.4375rem;
+  padding: 1.15625rem 2.65625rem;
+  width: 100%;
+}
+
+@media (min-width: variables.$breakpoint-modal) {
+  .checkout-modal-form {
+    gap: 2.1875rem;
+  }
+
+  .checkout-modal-form-group {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+
+  .checkout-modal-button {
+    width: fit-content;
+  }
+}

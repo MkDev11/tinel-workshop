@@ -1,6 +1,5 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { CloseIcon } from '../util'
 import { Button } from './Button'
 import { Checkbox } from './Checkbox'
 import { DateInput } from './DateInput'
@@ -49,17 +48,11 @@ export function CheckoutFormModal(props: Props) {
   }
 
   return (
-    <Modal isVisible={props.isModalOpen}>
-      <div className="checkout-modal-header">
-        <h2 className="checkout-modal-header__title">Checkout</h2>
-        <CloseIcon
-          className="checkout-modal-header__close-icon"
-          onClick={onCloseModal}
-        />
-      </div>
-      <div className="checkout-modal-subtitle">
-        What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing.
-      </div>
+    <Modal
+      isVisible={props.isModalOpen}
+      title="Checkout"
+      onCloseModal={onCloseModal}
+    >
       <form className="checkout-modal-form" onSubmit={onSubmit}>
         <LabeledInput
           label="First Name"

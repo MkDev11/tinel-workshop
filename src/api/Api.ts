@@ -1,4 +1,4 @@
-import { API_WORKSHOPS_LIMIT, API_URL } from './constants'
+import { API_WORKSHOP_LIST_LIMIT, API_URL } from './constants'
 import {
   PaginatedWorkshopList,
   WorkshopFull,
@@ -48,7 +48,7 @@ export class Api {
     page: number,
     category?: string
   ): Promise<PaginatedWorkshopList> {
-    const requestUrl = `${API_URL}/workshops?_page=${page}&_limit=${API_WORKSHOPS_LIMIT}${
+    const requestUrl = `${API_URL}/workshops?_page=${page}&_limit=${API_WORKSHOP_LIST_LIMIT}${
       category ? `&category=${category}` : ''
     }&_sort=date&_order=desc`
 
@@ -61,7 +61,7 @@ export class Api {
     return {
       items: await response.json(),
       nextPage:
-        page * API_WORKSHOPS_LIMIT <
+        page * API_WORKSHOP_LIST_LIMIT <
         parseInt(response.headers.get('x-total-count') || '0')
           ? page + 1
           : undefined,

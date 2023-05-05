@@ -48,7 +48,7 @@ export function CartDrawer(props: Props) {
       {cartCount === 0 ? (
         <EmptyIcon className="cart-drawer-empty-icon" />
       ) : (
-        <div className="cart-drawer-body">
+        <>
           <ul className="cart-drawer-list">
             {props.products.map((workshop) => (
               <li
@@ -74,7 +74,7 @@ export function CartDrawer(props: Props) {
                     className="cart-workshop-card-delete-icon"
                     onClick={() => props.onRemoveWorkshop(workshop.id)}
                   />
-                  <div className="cart-workshop-card-action-row">
+                  <div className="cart-workshop-card-quantity-and-price">
                     <NumberInput
                       className="cart-workshop-card-quantity"
                       value={workshop.quantity}
@@ -115,7 +115,7 @@ export function CartDrawer(props: Props) {
               Checkout
             </Button>
           </div>
-        </div>
+        </>
       )}
     </Drawer>
   )

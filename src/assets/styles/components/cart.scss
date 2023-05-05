@@ -45,7 +45,7 @@
   align-items: center;
   padding-inline: 2.5rem;
   padding-top: 1.875rem;
-  margin-bottom: 3.125rem;
+  margin-bottom: 1.5625rem;
 }
 
 .cart-drawer-header-overview {
@@ -80,16 +80,15 @@
   margin: 0 auto;
 }
 
-.cart-drawer-body {
-  overflow-y: auto;
-}
-
 .cart-drawer-list {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding-inline: 1.25rem;
-  margin-bottom: 3.125rem;
+  padding: 1.5625rem 1.25rem;
+  margin-bottom: 1.5625rem;
+  border-block: 2px solid variables.$color-grey-border;
+  height: calc(100vh - 15.5625rem);
+  overflow-y: auto;
 }
 
 .cart-workshop-card {
@@ -143,7 +142,7 @@
   }
 }
 
-.cart-workshop-card-action-row {
+.cart-workshop-card-quantity-and-price {
   display: flex;
   align-items: center;
   gap: 0.625rem;
@@ -247,12 +246,18 @@
 
   .cart-drawer-header,
   .cart-drawer-list {
-    margin-bottom: 3.75rem;
+    margin-bottom: 1.875rem;
   }
 
   .cart-drawer-header-overview__text {
     font-size: 1.4375rem;
     line-height: 1.8125rem;
+  }
+
+  .cart-drawer-list {
+    padding-block: 1.875rem;
+    margin-bottom: 1.875rem;
+    height: calc(100vh - 16.1875rem);
   }
 
   .cart-drawer-subtotal__text {

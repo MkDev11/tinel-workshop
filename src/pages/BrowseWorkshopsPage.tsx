@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  BrowseWorkshopsListWrapper,
-  Main,
-  Navigation,
-  PageLayout,
-} from '../components'
+import { BrowseWorkshopsListWrapper, Main, Navigation } from '../components'
 import { WorkshopCategory } from '../util'
 
 type Props = {
@@ -13,11 +8,9 @@ type Props = {
 
 export function BrowseWorkshopsPage(props: Props) {
   return (
-    <PageLayout>
-      <Main type="browse">
-        <Navigation activeCategory={props.category} />
-        <BrowseWorkshopsListWrapper category={props.category} />
-      </Main>
-    </PageLayout>
+    <Main type="browse">
+      <Navigation activeCategory={props.category} />
+      <BrowseWorkshopsListWrapper category={props.category} />
+    </Main>
   )
 }

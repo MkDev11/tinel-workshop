@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 
 type Props = {
-  type: 'browse' | 'info'
+  type?: 'browse' | 'info'
   children: React.ReactNode
 }
 
