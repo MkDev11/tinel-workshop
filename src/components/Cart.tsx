@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { WorkshopShort } from '../api'
 import { useDidMount, useCheckout } from '../hooks'
@@ -99,19 +98,15 @@ export function Cart() {
   return (
     <>
       <div
-        className={classNames('header-cart tab-focus', {
-          'header-cart--nonempty': products.length > 0,
-        })}
+        className="header-cart-preview tab-focus"
         tabIndex={products.length > 0 ? 0 : -1}
-        onClick={products.length === 0 ? undefined : handleOpenDrawer}
+        onClick={handleOpenDrawer}
         onKeyDown={(e) => {
-          if (products.length > 0) {
-            handleKeyboardEvent(e, handleOpenDrawer)
-          }
+          handleKeyboardEvent(e, handleOpenDrawer)
         }}
       >
         <CartIconWrapper cartCount={products.length} />
-        <span className="header-cart__text">
+        <span className="header-cart-preview__text">
           {products.length === 0
             ? 'Cart is Empty'
             : products.length === 1

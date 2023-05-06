@@ -16,6 +16,7 @@ export function DateInput<T extends FieldValues>(props: Props<T>) {
       <CalendarIcon className="date-input-calendar-icon" />
       <Controller
         control={props.control}
+        rules={props.rules}
         name={props.name}
         render={({ field }) => (
           <DatePicker
