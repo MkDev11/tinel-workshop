@@ -89,6 +89,7 @@ export function WorkshopList(props: Props) {
               <Button
                 variant="yellow"
                 className="workshop-card-button"
+                dataTestId="add-to-cart-button"
                 onClick={() => handleAddToCart(workshop)}
               >
                 <CartIcon className="workshop-card-button__icon" />

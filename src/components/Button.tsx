@@ -8,6 +8,7 @@ type Props = {
   submit?: boolean
   loading?: boolean
   disabled?: boolean
+  dataTestId?: string
   onClick?: () => void
 }
 
@@ -25,6 +26,7 @@ export function Button(props: Props) {
       )}
       type={props.submit ? 'submit' : 'button'}
       disabled={props.disabled}
+      data-testid={props.dataTestId}
       onClick={props.onClick}
     >
       {props.children}

@@ -165,6 +165,7 @@ export function CheckoutFormModal(props: Props) {
           className="checkout-modal-button"
           loading={props.loading}
           disabled={props.loading}
+          dataTestId="submit-order"
           submit={true}
         >
           Checkout

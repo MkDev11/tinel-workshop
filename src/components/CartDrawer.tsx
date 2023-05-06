@@ -123,6 +123,7 @@ export function CartDrawer(props: Props) {
               variant="blue"
               className="cart-drawer-checkout-button"
               disabled={props.total === 0}
+              dataTestId="checkout-button"
               onClick={props.onOpenCheckoutModal}
             >
               Checkout

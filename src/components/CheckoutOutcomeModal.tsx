@@ -14,6 +14,7 @@ export function CheckoutOutcomeModal(props: Props) {
       <Button
         variant="yellow"
         className="checkout-modal-button"
+        dataTestId="back-to-shop-button"
         onClick={props.onBackToShop}
       >
         Back to Shop

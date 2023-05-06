@@ -23,12 +23,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "api": "json-server --watch src/api/db.json --port 3001",
-    "dev": "concurrently \"npm run api\" \"npm start\"",
+    "local-api": "json-server --watch src/api/db.json --port 3001",
+    "dev": "concurrently \"npm run local-api\" \"npm start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "concurrently \"npm run local-api\" \"react-scripts test\""
   },
   "eslintConfig": {
     "extends": [
